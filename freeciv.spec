@@ -11,7 +11,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.1
-Release:	1.%{beta}
+Release:	1.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
@@ -68,14 +68,14 @@ Window.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
-	$RPM_BUILD_ROOT{%{_applnkdir}/Games/Strategy,%{_pixmapsdir}}
+	$RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
-install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
+install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
 cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
@@ -90,5 +90,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README ChangeLog NEWS
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/freeciv
-%{_applnkdir}/Games/Strategy/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
