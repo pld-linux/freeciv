@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.1
-Release:	4
+Release:	4.2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
@@ -30,10 +30,6 @@ BuildRequires:	esound-devel
 %{!?with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
-Requires:	SDL_mixer
-Requires:	esound
-%{!?with_gtk2:Requires:	gtk+ > 1.2.1}
-%{!?with_gtk2:Requires:	imlib >= 1.9.2}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,23 +41,52 @@ against computer-AI players.
 Clon del juego Civilization.
 
 %description -l pl
-Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida
-Meiera. Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w
-ni± z innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom"
-zarz±dzanym przez komputer.
+Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida Meiera.
+Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w ni± z
+innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym
+przez komputer.
 
 %description -l pt_BR
 O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
+%package client
+Summary:	Freeciv game client
+Summary(pl):	Klient gry Freeciv
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	SDL_mixer
+Requires:	esound
+%{!?with_gtk2:Requires:	gtk+ > 1.2.1}
+%{!?with_gtk2:Requires:	imlib >= 1.9.2}
+
+%description client
+This package contains Freeciv game client.
+
+%description client -l pl
+Ten pakiet zawiera klienta gry Freeciv.
+
+
+%package server
+Summary:	Freeciv game server
+Summary(pl):	Serwer gry Freeciv
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+
+%description server
+This package contans Freeciv game server.
+
+%description server -l pl
+Ten pakiet zawiera server gry Freeciv.
+
 %prep
-%setup -q -a 4 
+%setup -q -a 4
 %patch0 -p1
 
 mv -f po/{no,nb}.po
 
 %build
-cp -f /usr/share/automake/config.sub .
+cp -f %{_datadir}/automake/config.sub .
 %configure2_13 \
 %{!?with_gtk2:	--enable-client=gtk} \
 %{?with_gtk2:	--enable-client=gtk2}
@@ -91,7 +116,28 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS README ChangeLog NEWS
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/freeciv
-%{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_datadir}/%{name}/helpdata.txt
+
+%files server
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/civserver
+%{_desktopdir}/%{name}-server.desktop
+%{_datadir}/%{name}/civ1
+%{_datadir}/%{name}/civ2
+%{_datadir}/%{name}/default
+%{_datadir}/%{name}/history
+%{_datadir}/%{name}/nation
+%{_datadir}/%{name}/scenario
+%{_datadir}/%{name}/*.serv
+
+%files client
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/civclient
+%{_desktopdir}/%{name}-client.desktop
+%{_datadir}/%{name}/freeciv.rc*
+%{_datadir}/%{name}/isotrident
+%{_datadir}/%{name}/misc
+%{_datadir}/%{name}/stdsounds
+%{_datadir}/%{name}/trident
+%{_datadir}/%{name}/*.*spec
