@@ -3,7 +3,7 @@
 %bcond_without gtk2		# build gtk1 client, not gtk2
 #
 
-%define		beta	beta3
+%define		beta	beta4
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -15,7 +15,7 @@ Release:	1.%{beta}
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
-# Source0-md5:	3184042067d5fdd511dddcf5ff9b1ab7
+# Source0-md5:	55188bafed83501255d6fed62dea4517
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
