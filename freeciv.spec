@@ -34,7 +34,6 @@ przez komputer.
 
 %build
 gettextize --copy --force
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-gtk
 %{__make}
