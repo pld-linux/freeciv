@@ -50,11 +50,11 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/X11/wmconfig/freeciv-server
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc AUTHORS README freeciv_hackers_guide.txt
 %doc HOWTOPLAY NEWS 
 /etc/X11/wmconfig/*
-%attr(755, root, root) /usr/X11R6/bin/*
+%attr(755,root,root) /usr/X11R6/bin/*
 /usr/X11R6/share/freeciv
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
@@ -126,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Sun Sep 21 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0k-1]
-- changed %attr on %doc to (-, root,root)
+- changed %attr on %doc to (-,root,root)
 
 * Sat Aug  9 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0j-1]
