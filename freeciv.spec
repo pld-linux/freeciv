@@ -29,7 +29,7 @@ poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr/X11R6 \
 	--with-xaw3d
 make
