@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Freeciv
-Name[ja]=¥Õ¥ê¡¼¥·¥ô
+Name[ja]=Ä½ÅÄ½Ä™Ä„ÅºÄ½Ë‡Ä½Ã´
 Comment=Free Civilization clone game
-Comment[ja]=¥·¥ô¥£¥é¥¤¥¼¡¼¥·¥ç¥óIIÉ÷Ì£¤Ê¥²¥¤¥à
+Comment[ja]=Ä½Ë‡Ä½Ã´Ä½ÅÄ½Ã©Ä½Â¤Ä½ÅºÄ„ÅºÄ½Ë‡Ä½Ã§Ä½Ã³IIÃ‰Ã·ÄšÅÂ¤Ä˜Ä½Ë›Ä½Â¤Ä½Å•
 Comment[pl]=Niekomercyjny klon gry Civilization
 Exec=civclient --Sound stdsounds.spe
 Icon=freeciv.png
