@@ -15,10 +15,9 @@ BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
 BuildRequires:	XFree86-devel
 BuildRequires:	gettext-devel
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_applnkdir	%{_datadir}/applnk
 
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for unix and
