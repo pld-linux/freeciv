@@ -10,9 +10,9 @@ Source0:	ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:	freeciv-client.wmconfig
 Source2:	freeciv-server.wmconfig
 URL:		http://www.freeciv.org/
-BuildPrereq:	Xaw3d-devel
-BuildPrereq:	XFree86-devel
-BuildPrereq:	xpm-devel
+BuildRequires:	Xaw3d-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	xpm-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define _prefix /usr/X11R6
