@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without gtk2		#build gtk2 client, not gtk
+%bcond_without gtk2		# build gtk1 client, not gtk2
 #
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
