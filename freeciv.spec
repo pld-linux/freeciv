@@ -1,9 +1,13 @@
+#
+# Conditional build:
+#  _with_gtk2		build gtk2 client, not gtk
+#
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.13.0
+Version:	1.14.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
@@ -15,8 +19,9 @@ Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 URL:		http://www.freeciv.org/
 BuildRequires:	esound-devel
-BuildRequires:	gtk+-devel > 1.2.1
-BuildRequires:	imlib-devel >= 1.9.2
+%{!?_with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
+%{?_with_gtk2:BuildRequires:	gtk+2-devel}
+%{!?_with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,7 +50,8 @@ Window.
 
 %build
 %configure2_13 \
-	--with-gtk
+%{!?_with_gtk2:	--enable-client=gtk} \
+%{?_with_gtk2:	--enable-client=gtk2}
 %{__make}
 
 %install
