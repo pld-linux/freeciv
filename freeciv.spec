@@ -1,7 +1,7 @@
 Summary:     FREE CIVilization clone
 Summary(pl): Niekomercyjny klon CIVilization
 Name:        freeciv
-Version:     1.7.2
+Version:     1.8.0pre3
 Release:     1
 Copyright:   GPL
 Group:       X11/Games/Strategy
@@ -23,7 +23,7 @@ Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z innymi osobami
 poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
 %prep
-%setup -q
+%setup -qn freeciv-1.8.0
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
@@ -49,14 +49,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644, root, root, 755)
-%doc AUTHORS ChangeLog README freeciv_hackers_guide.txt
-%doc HOWTOPLAY
+%doc AUTHORS README freeciv_hackers_guide.txt
+%doc HOWTOPLAY NEWS 
 %config(missingok) /etc/X11/wmconfig/*
 %attr(755, root, root) /usr/X11R6/bin/*
 /usr/X11R6/share/freeciv
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
 %changelog
+* Sun Apr 11 1999 Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl?
+[1.8.0pre3-1]
+- NEWS instead of ChangeLog goes to %doc
+- New version
+
 * Tue Jan 26 1999 Micha³ Kuratczyk <kurkens@polbox.com>
 - added "Group(pl)"
 
