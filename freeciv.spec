@@ -1,11 +1,11 @@
 Summary:	FREE CIVilization clone
 Summary(pl):	Niekomercyjny klon CIVilization
 Name:		freeciv
-Version:	1.12.0
+Version:	1.12.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}.tar.bz2
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 URL:		http://www.freeciv.org/
@@ -47,7 +47,7 @@ rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
 install $RPM_SOURCE_DIR/%{icon} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
-gzip -9nf AUTHORS README freeciv_hackers_guide.txt HOWTOPLAY NEWS
+gzip -9nf AUTHORS README ChangeLog NEWS
 
 %find_lang %{name}
 
