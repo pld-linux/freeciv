@@ -68,7 +68,7 @@ rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv
+install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
 cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
 
 %find_lang %{name}
