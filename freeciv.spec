@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
@@ -53,7 +53,7 @@ O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
 %prep
-%setup -q -a 4 -n %{name}-%{version}-%{beta}
+%setup -q -a 4 
 
 %build
 %configure2_13 \
