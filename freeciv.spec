@@ -8,14 +8,16 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
+# Source0-md5:	c506ec29b94ea516aaa02a107129cf10
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
 Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
+# Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 URL:		http://www.freeciv.org/
 BuildRequires:	esound-devel
@@ -25,7 +27,6 @@ BuildRequires:	esound-devel
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for
