@@ -1,22 +1,19 @@
 Summary:	FREE CIVilization clone
 Summary(pl):	Niekomercyjny klon CIVilization
 Name:		freeciv
-Version:	1.11.8
+Version:	1.12.0
 Release:	1
 License:	GPL
-Group:		X11/Games/Strategy
-Group(pl):	X11/Gry/Strategiczne
-Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}.tar.bz2
-Source1:	freeciv-client.desktop
-Source2:	freeciv-server.desktop
-Patch0:		freeciv-gettext.patch
+Group:		X11/Applications/Games/Strategy
+Group(de):	X11/Applikationen/Spiele/Strategie
+Group(pl):	X11/Aplikacje/Gry/Strategiczne
+Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
+Source1:	%{name}-client.desktop
+Source2:	%{name}-server.desktop
 URL:		http://www.freeciv.org/
 Icon:		freeciv.gif
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
-BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -34,14 +31,9 @@ przez komputer.
 
 %prep
 %setup  -q
-%patch0 -p1
 
 %build
-gettextize --copy --force
-aclocal
-autoconf
-automake -a -c
-%configure \
+%configure2_13 \
 	--with-gtk
 %{__make}
 
