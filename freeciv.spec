@@ -18,7 +18,7 @@ X. This is multiplayer strategic game and you can also play against
 computer-AI players.
 
 %description -l pl
-Freeciv jest to nie komercyjny (GPL) klon gry Civilization firmy Sid Meiers.
+Freeciv jest to nie komercyjny (GPL) klon gry Civilization Sid'a Meiers'a.
 Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z innymi osobami
 poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
