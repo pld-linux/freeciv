@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
@@ -117,6 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README ChangeLog NEWS
 %{_pixmapsdir}/*
+%dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
 
 %files server
