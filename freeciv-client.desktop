@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=FREE CIVilization
+Comment=Free Civilization clone game
+Comment[pl]=Niekomercyjny klon gry Civilization
+Exec=civclient
+Terminal=0
+Type=Application
