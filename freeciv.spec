@@ -1,9 +1,7 @@
 #
-# Conditional build:
-%bcond_without gtk2		# build sdl client, not gtk2
 
-%define		snap	20040923
-%define		_snap	cvs-Sep-23
+%define		snap	20040927
+%define		_snap	cvs-Sep-27
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -15,13 +13,13 @@ Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/pub/freeciv/latest/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	7290cb5cc8b6177de5047ce308e6e3e0
+# Source0-md5:	a7ca44320e0e737a00c1105b9297ca72
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
-Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
+Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds1.tar.gz
 # Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
-Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
+Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
 Patch0:		%{name}-locale_names.patch
 #Patch1:		%{name}-compile_fix.patch
@@ -29,8 +27,7 @@ URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
 BuildRequires:	esound-devel
-%{!?with_gtk2:BuildRequires:	SDL-devel}
-%{?with_gtk2:BuildRequires:	gtk+2-devel}
+BuildRequires:	gtk+2-devel
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -60,8 +57,6 @@ Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL_mixer
 Requires:	esound
-%{!?with_gtk2:Requires:	gtk+ > 1.2.1}
-%{!?with_gtk2:Requires:	imlib >= 1.9.2}
 
 %description client
 This package contains Freeciv game client.
@@ -88,8 +83,7 @@ Ten pakiet zawiera server gry Freeciv.
 %build
 cp -f %{_datadir}/automake/config.sub .
 %configure2_13 \
-%{!?with_gtk2:	--enable-client=sdl} \
-%{?with_gtk2:	--enable-client=gtk2}
+	--enable-client=gtk2
 
 %{__make}
 
