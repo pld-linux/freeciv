@@ -3,7 +3,7 @@ Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.12.4
+Version:	1.12.6
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
