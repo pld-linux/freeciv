@@ -4,12 +4,14 @@ Name:        freeciv
 Version:     1.7.2
 Release:     1
 Copyright:   GPL
+Group:       X11/Games/Strategy
+Group(pl):   X11/Gry/Strategiczne
 Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:     freeciv-client.wmconfig
 Source2:     freeciv-server.wmconfig
 URL:         http://www.freeciv.org/
-Group:       X11/Games/Strategy
 Buildroot:   /tmp/%{name}-%{version}-root
+
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for unix and
 X. This is multiplayer strategic game and you can also play against
@@ -55,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
 %changelog
+* Tue Jan 26 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+- added "Group(pl)"
+
 * Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.7.2-1]
 - removed all patches,
