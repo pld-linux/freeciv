@@ -27,6 +27,12 @@ BuildRequires:	esound-devel
 %{!?_with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
+BuildRequires:	SDL_mixer-devel
+Requires:	esound
+Requires:	SDL_mixer
+%{!?_with_gtk2:Requires:	gtk+ > 1.2.1}
+%{?_with_gtk2:Requires:		gtk+2}
+%{!?_with_gtk2:Requires:	imlib >= 1.9.2}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
