@@ -3,15 +3,17 @@ Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.12.6
+Version:	1.13.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
+Source3:	%{name}.png
+Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
+Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 URL:		http://www.freeciv.org/
-Icon:		freeciv.gif
 BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -37,7 +39,7 @@ O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
 %prep
-%setup  -q
+%setup -q -a 4
 
 %build
 %configure2_13 \
@@ -47,14 +49,16 @@ Window.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
-	$RPM_BUILD_ROOT{%{_applnkdir}/Games/Strategy,%{_datadir}/pixmaps}
+	$RPM_BUILD_ROOT{%{_applnkdir}/Games/Strategy,%{_pixmapsdir}}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
-install $RPM_SOURCE_DIR/%{icon} $RPM_BUILD_ROOT%{_datadir}/pixmaps
+install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv
+cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
 
 %find_lang %{name}
 
