@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=FREE CIV server
-Name[pl]=Serwer FREE CIV
+Name=Freeciv server
+Name[pl]=Serwer freeciv
 Comment=Free Civilization clone game server console
 Comment[pl]=Konsola serwera niekomercyjnego klonu gry Civilization
 Exec=civserver
