@@ -81,7 +81,7 @@ Ten pakiet zawiera server gry Freeciv.
 %setup -q -a 4 -a 6 -n %{name}-%{version}-%{beta}
 
 %build
-cp -f %{_datadir}/automake/config.sub .
+cp -f %{_datadir}/automake/config.sub bootstrap
 %configure2_13 \
 	--enable-client=gtk2
 
@@ -131,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/civclient
+%attr(755,root,root) %{_bindir}/civmanual
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/isophex
