@@ -60,8 +60,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/freeciv
 %{_libdir}/X11/app-defaults/Freeciv
-
-%changelog
-* Mon May 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.8.0-2]
-- spec writed by PLD team (based on my old spec for freeciv).
