@@ -50,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644, root, root, 755)
-%doc AUTHORS ChangeLog README CHANGES CREDITS freeciv_hackers_guide.txt
+%doc AUTHORS ChangeLog README CREDITS freeciv_hackers_guide.txt
 %doc HOWTOPLAY
 %config(missingok) /etc/X11/wmconfig/*
 %attr(755, root, root) /usr/X11R6/bin/*
@@ -61,6 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Sat Aug 22 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.7.0-2]
+- removed CHANGES from %doc,
 - fixed some bugs in pl translation.
 
 * Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
