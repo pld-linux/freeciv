@@ -1,16 +1,13 @@
 Summary:     FREE CIVilization clone
 Summary(pl): Niekomercyjny klon CIVilization
 Name:        freeciv
-Version:     1.7.1
-Release:     2
+Version:     1.7.2
+Release:     1
 Copyright:   GPL
 Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:     freeciv-client.wmconfig
 Source2:     freeciv-server.wmconfig
-Patch0:      freeciv-cfg.patch
-Patch1:      ftp://freeciv.ultraviolet.org/pub/freeciv/xaw3d.diff
 URL:         http://www.freeciv.org/
-Icon:        %{name}.gif
 Group:       X11/Games/Strategy
 Buildroot:   /tmp/%{name}-%{version}-root
 %description
@@ -25,16 +22,12 @@ poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
-aclocal
-automake --gnu --include-deps Makefile
-autoconf
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
-	--prefix=/usr/X11R6
+	--prefix=/usr/X11R6 \
+	--with-xaw3d
 make
 
 %install
@@ -42,8 +35,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{etc/X11/wmconfig,usr/X11R6/lib/X11/app-defaults}
 
 make install prefix=$RPM_BUILD_ROOT/usr/X11R6
-
-strip $RPM_BUILD_ROOT/usr/X11R6/bin/*
 
 mv $RPM_BUILD_ROOT/usr/X11R6/share/freeciv/Freeciv \
 $RPM_BUILD_ROOT/usr/X11R6/lib/X11/app-defaults
@@ -56,15 +47,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644, root, root, 755)
-%doc AUTHORS ChangeLog README CREDITS freeciv_hackers_guide.txt
+%doc AUTHORS ChangeLog README freeciv_hackers_guide.txt
 %doc HOWTOPLAY
 %config(missingok) /etc/X11/wmconfig/*
 %attr(755, root, root) /usr/X11R6/bin/*
-%dir /usr/X11R6/share/freeciv
-/usr/X11R6/share/freeciv/*
+/usr/X11R6/share/freeciv
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
 %changelog
+* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.7.2-1]
+- removed all patches,
+- simplification in %files,
+- added --with-xaw3d to confirgure parameters.
+
 * Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.7.1-2]
 - added using LDFLAGS="-s" to ./configure enviroment,
