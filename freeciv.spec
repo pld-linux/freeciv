@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.0
-Release:	0.%{beta}.1
+Release:	0.%{beta}.2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
@@ -19,10 +19,14 @@ Source2:	%{name}-server.desktop
 Source3:	%{name}.png
 Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds1.tar.gz
 # Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
+# Source4-size:	1225668
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
+# Source5-size:	5948
+Source6:	ftp://ftp.freeciv.org/freeciv/contrib/tilesets/isophex/isophex-1.14.99.tar.gz
+# Source6-md5:	041831c927491e1226b8a56f955b545c
+# Source6-size:	826074
 Patch0:		%{name}-locale_names.patch
-#Patch1:		%{name}-compile_fix.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
@@ -78,7 +82,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4 -n %{name}-%{version}-%{beta}
+%setup -q -a 4 -a 6 -n %{name}-%{version}-%{beta}
 
 %build
 cp -f %{_datadir}/automake/config.sub .
@@ -99,6 +103,9 @@ install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
 cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
+install isophex.tilespec $RPM_BUILD_ROOT%{_datadir}/freeciv
+install -d $RPM_BUILD_ROOT%{_datadir}/freeciv/isophex
+install isophex/* $RPM_BUILD_ROOT%{_datadir}/freeciv/isophex
 
 %find_lang %{name}
 
@@ -123,15 +130,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
+%{_mandir}/man6/civserver.6.gz
 
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/civclient
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/freeciv.rc*
+%{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
 %{_datadir}/%{name}/stdsounds
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
+%{_mandir}/man6/civclient.6.gz
