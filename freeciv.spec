@@ -115,4 +115,4 @@ rm -rf $RPM_BUILD_ROOT
 - all rewritetd for using Buildroot,
 - added:
   - URL,
-  - %attr macros in %file (allow build package from non root account).
+  - %attr macros in %file (allows build package from non root account).
