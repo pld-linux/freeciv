@@ -29,7 +29,6 @@ BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for
 unix and X. This is multiplayer strategic game and you can also play
@@ -62,7 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 	$RPM_BUILD_ROOT{%{_applnkdir}/Games/Strategy,%{_pixmapsdir}}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
