@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Freeciv
+Name[ja]=フリーシヴ
+Comment=Free Civilization clone game
+Comment[ja]=シヴィライゼーションII風味なゲイム
+Comment[pl]=Niekomercyjny klon gry Civilization
+Exec=civclient --Sound stdsounds.spe
+Icon=freeciv.png
+Terminal=false
+Type=Application
+Categories=Application;Game;StrategyGame;
+# vi: encoding=utf-8

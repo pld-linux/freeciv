@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Freeciv server
+Name[pl]=Serwer freeciv
+Comment=Free Civilization clone game server console
+Comment[pl]=Konsola serwera niekomercyjnego klonu gry Civilization
+Exec=civserver
+Icon=freeciv.png
+Terminal=true
+Type=Application
+Categories=Application;Game;StrategyGame;
+# vi: encoding=utf-8
