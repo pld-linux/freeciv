@@ -31,7 +31,7 @@ poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--with-xaw3d
 make
