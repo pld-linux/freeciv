@@ -19,14 +19,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix		/usr/X11R6
 
 %description
-Free clone of Sid Meiers Civilization. Free Civilization clone for unix and
-X. This is multiplayer strategic game and you can also play against
-computer-AI players.
+Free clone of Sid Meiers Civilization. Free Civilization clone for
+unix and X. This is multiplayer strategic game and you can also play
+against computer-AI players.
 
 %description -l pl
-Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sid'a Meiers'a.
-Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z innymi osobami
-poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
+Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sid'a
+Meiers'a. Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z
+innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym
+przez komputer.
 
 %prep
 %setup -q
@@ -47,7 +48,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
-install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/applnk/Games/Strategy
+install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
 install $RPM_SOURCE_DIR/%{icon} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
 gzip -9nf AUTHORS README freeciv_hackers_guide.txt HOWTOPLAY NEWS
@@ -62,5 +63,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/freeciv
-%{_datadir}/applnk/Games/Strategy/*
+%{_applnkdir}/Games/Strategy/*
 %{_datadir}/pixmaps/*
