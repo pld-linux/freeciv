@@ -63,4 +63,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/freeciv
 %{_applnkdir}/Games/Strategy/*
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
