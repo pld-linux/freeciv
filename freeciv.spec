@@ -13,7 +13,6 @@ URL:		http://www.freeciv.org/
 Icon:		freeciv.gif
 BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
-BuildRequires:	XFree86-devel
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
