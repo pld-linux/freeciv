@@ -1,6 +1,8 @@
 [Desktop Entry]
-Name=FREE CIVilization
+Name=freeciv
+Name[ja]=フリーシヴ
 Comment=Free Civilization clone game
+Comment[ja]=シヴィライゼーションII風味なゲイム
 Comment[pl]=Niekomercyjny klon gry Civilization
 Exec=civclient
 Icon=freeciv.gif
