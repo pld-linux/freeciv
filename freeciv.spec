@@ -1,16 +1,16 @@
-Summary:     FREE CIVilization clone
-Summary(pl): Niekomercyjny klon CIVilization
-Name:        freeciv
-Version:     1.8.0pre3
-Release:     1
-Copyright:   GPL
-Group:       X11/Games/Strategy
-Group(pl):   X11/Gry/Strategiczne
-Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
-Source1:     freeciv-client.wmconfig
-Source2:     freeciv-server.wmconfig
-URL:         http://www.freeciv.org/
-Buildroot:   /tmp/buildroot-%{name}-%{version}
+Summary:	FREE CIVilization clone
+Summary(pl):	Niekomercyjny klon CIVilization
+Name:		freeciv
+Version:	1.8.0
+Release:	1
+Copyright:	GPL
+Group:		X11/Games/Strategy
+Group(pl):	X11/Gry/Strategiczne
+Source0:	ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
+Source1:	freeciv-client.wmconfig
+Source2:	freeciv-server.wmconfig
+URL:		http://www.freeciv.org/
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for unix and
@@ -23,7 +23,7 @@ Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z innymi osobami
 poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 
 %prep
-%setup -qn freeciv-1.8.0
+%setup -q
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
@@ -51,14 +51,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc AUTHORS README freeciv_hackers_guide.txt
 %doc HOWTOPLAY NEWS 
-%config(missingok) /etc/X11/wmconfig/*
+/etc/X11/wmconfig/*
 %attr(755, root, root) /usr/X11R6/bin/*
 /usr/X11R6/share/freeciv
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
 %changelog
 * Sun Apr 11 1999 Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl?
-[1.8.0pre3-1]
+  [1.8.0pre3-1]
 - NEWS instead of ChangeLog goes to %doc
 - New version
 
