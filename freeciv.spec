@@ -1,6 +1,6 @@
 #
 
-%define		beta	beta1
+%define		beta	beta2
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -8,24 +8,20 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.0
-Release:	0.%{beta}.2
+Release:	0.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
-# Source0-md5:	bc3bc8885a8f33e6d21b700c04f466c4
-# Source0-size:	7286598
+# Source0-md5:	b3c5958f8f0f25f214d88174ef2fc801
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
 Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds1.tar.gz
 # Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
-# Source4-size:	1225668
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
-# Source5-size:	5948
 Source6:	ftp://ftp.freeciv.org/freeciv/contrib/tilesets/isophex/isophex-1.14.99.tar.gz
 # Source6-md5:	041831c927491e1226b8a56f955b545c
-# Source6-size:	826074
 Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
