@@ -15,6 +15,7 @@ Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/pub/freeciv/latest/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	7290cb5cc8b6177de5047ce308e6e3e0
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
