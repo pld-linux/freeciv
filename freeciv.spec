@@ -1,7 +1,7 @@
 Summary:	FREE CIVilization clone
 Summary(pl):	Niekomercyjny klon CIVilization
 Name:		freeciv
-Version:	1.11.6
+Version:	1.11.8
 Release:	1
 License:	GPL
 Group:		X11/Games/Strategy
