@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.14.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
@@ -23,6 +23,7 @@ Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
+BuildRequires:	automake
 BuildRequires:	esound-devel
 %{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
 %{?with_gtk2:BuildRequires:	gtk+2-devel}
@@ -60,6 +61,7 @@ Window.
 mv -f po/{no,nb}.po
 
 %build
+cp -f /usr/share/automake/config.sub .
 %configure2_13 \
 %{!?with_gtk2:	--enable-client=gtk} \
 %{?with_gtk2:	--enable-client=gtk2}
