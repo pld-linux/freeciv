@@ -1,19 +1,19 @@
 #
 
-%define		snap	20040927
-%define		_snap	cvs-Sep-27
+%define		beta	beta1
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.14.99
-Release:	0.%{snap}.1
+Version:	2.0.0
+Release:	0.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/pub/freeciv/latest/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	a7ca44320e0e737a00c1105b9297ca72
+Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
+# Source0-md5:	bc3bc8885a8f33e6d21b700c04f466c4
+# Source0-size:	7286598
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -78,7 +78,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4 -n %{name}-%{_snap}
+%setup -q -a 4 -n %{name}-%{version}-%{beta}
 
 %build
 cp -f %{_datadir}/automake/config.sub .
