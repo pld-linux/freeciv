@@ -10,7 +10,7 @@ Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz
 Source1:     freeciv-client.wmconfig
 Source2:     freeciv-server.wmconfig
 URL:         http://www.freeciv.org/
-Buildroot:   /tmp/%{name}-%{version}-root
+Buildroot:   /tmp/buildroot-%{name}-%{version}
 
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for unix and
