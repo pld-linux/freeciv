@@ -35,7 +35,7 @@ Requires:	esound
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Free clone of Sid Meiers Civilization. Free Civilization clone for
+Free clone of Sid Meier's Civilization. Free Civilization clone for
 unix and X. This is multiplayer strategic game and you can also play
 against computer-AI players.
 
@@ -44,7 +44,7 @@ Clon del juego Civilization.
 
 %description -l pl
 Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida
-Meiersa. Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w
+Meiera. Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w
 ni± z innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom"
 zarz±dzanym przez komputer.
 
