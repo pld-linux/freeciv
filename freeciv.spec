@@ -9,6 +9,8 @@ Group(pl):	X11/Gry/Strategiczne
 Source0:	ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:	freeciv-client.wmconfig
 Source2:	freeciv-server.wmconfig
+BuildPrereq:	Xaw3d-devel
+BuildPrereq:	XFree86-devel
 URL:		http://www.freeciv.org/
 Buildroot:	/tmp/%{name}-%{version}-root
 
