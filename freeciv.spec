@@ -17,7 +17,9 @@ Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
 Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
+# Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
+# Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
 URL:		http://www.freeciv.org/
 BuildRequires:	esound-devel
 %{!?_with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
