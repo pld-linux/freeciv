@@ -1,18 +1,20 @@
 #
 # Conditional build:
-%bcond_without gtk2		# build gtk1 client, not gtk2
+%bcond_without gtk2		# build sdl client, not gtk2
+
+%define		snap	20040923
+%define		_snap	cvs-Sep-23
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.14.2
-Release:	2
+Version:	1.14.99
+Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	280770591c8f87ac542dcd50702da205
+Source0:	ftp://ftp.freeciv.org/pub/freeciv/latest/%{name}-%{_snap}.tar.bz2
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -21,13 +23,13 @@ Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
 Patch0:		%{name}-locale_names.patch
+#Patch1:		%{name}-compile_fix.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
 BuildRequires:	esound-devel
-%{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
+%{!?with_gtk2:BuildRequires:	SDL-devel}
 %{?with_gtk2:BuildRequires:	gtk+2-devel}
-%{!?with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -80,15 +82,12 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4
-%patch0 -p1
-
-mv -f po/{no,nb}.po
+%setup -q -a 4 -n %{name}-%{_snap}
 
 %build
 cp -f %{_datadir}/automake/config.sub .
 %configure2_13 \
-%{!?with_gtk2:	--enable-client=gtk} \
+%{!?with_gtk2:	--enable-client=sdl} \
 %{?with_gtk2:	--enable-client=gtk2}
 
 %{__make}
@@ -100,8 +99,6 @@ install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -141,4 +138,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/misc
 %{_datadir}/%{name}/stdsounds
 %{_datadir}/%{name}/trident
+%{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
