@@ -21,7 +21,6 @@ BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 Free clone of Sid Meiers Civilization. Free Civilization clone for
