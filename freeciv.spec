@@ -5,8 +5,6 @@ Version:	1.12.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Group(de):	X11/Applikationen/Spiele/Strategie
-Group(pl):	X11/Aplikacje/Gry/Strategiczne
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
