@@ -1,0 +1,12 @@
+--- freeciv-1.11.4/configure.in.wiget	Fri Apr 13 17:18:04 2001
++++ freeciv-1.11.4/configure.in	Fri Apr 13 17:21:53 2001
+@@ -474,6 +474,9 @@
+   fi])
+ fi
+ 
++INTLDEPS=""
++AC_SUBST(INTLDEPS)
++
+ dnl Freeciv uses a non-standard macro, Q_(), to handle cases of qualified
+ dnl translatable strings.  Since the Gettext supplied Autoconf support
+ dnl doesn't seem to have a way to add new keywords to its xgettext call,
