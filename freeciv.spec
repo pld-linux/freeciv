@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _with_gtk2		build gtk2 client, not gtk
+%bcond_without gtk2		#build gtk2 client, not gtk
 #
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -23,15 +23,15 @@ Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	esound-devel
-%{!?_with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
-%{?_with_gtk2:BuildRequires:	gtk+2-devel}
-%{!?_with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
+%{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
+%{?with_gtk2:BuildRequires:	gtk+2-devel}
+%{!?with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 Requires:	SDL_mixer
 Requires:	esound
-%{!?_with_gtk2:Requires:	gtk+ > 1.2.1}
-%{!?_with_gtk2:Requires:	imlib >= 1.9.2}
+%{!?with_gtk2:Requires:	gtk+ > 1.2.1}
+%{!?with_gtk2:Requires:	imlib >= 1.9.2}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,8 +57,8 @@ Window.
 
 %build
 %configure2_13 \
-%{!?_with_gtk2:	--enable-client=gtk} \
-%{?_with_gtk2:	--enable-client=gtk2}
+%{!?with_gtk2:	--enable-client=gtk} \
+%{?with_gtk2:	--enable-client=gtk2}
 
 %{__make}
 
