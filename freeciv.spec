@@ -14,8 +14,11 @@ Source3:	%{name}.png
 Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 URL:		http://www.freeciv.org/
+BuildRequires:	esound-devel
 BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
+BuildRequires:	readline-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
