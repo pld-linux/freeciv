@@ -44,7 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 	$RPM_BUILD_ROOT{%{_applnkdir}/Games/Strategy,%{_datadir}/pixmaps}
 
-make install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 
