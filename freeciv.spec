@@ -1,8 +1,8 @@
 Summary:     FREE CIVilization clone
 Summary(pl): Nie komercyjny klon CIVilization
 Name:        freeciv
-Version:     1.7.0
-Release:     2
+Version:     1.7.1
+Release:     1
 Copyright:   GPL
 Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:     freeciv-client.wmconfig
