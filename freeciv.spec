@@ -1,5 +1,7 @@
 Summary:	FREE CIVilization clone
+Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
+Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	1.12.2
 Release:	1
@@ -21,11 +23,18 @@ Free clone of Sid Meiers Civilization. Free Civilization clone for
 unix and X. This is multiplayer strategic game and you can also play
 against computer-AI players.
 
+%description -l es
+Clon del juego Civilization.
+
 %description -l pl
 Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sid'a
 Meiers'a. Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z
 innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym
 przez komputer.
+
+%description -l pt_BR
+O FreeCiv é uma implementação do Civilization II para o Sistema X
+Window.
 
 %prep
 %setup  -q
@@ -47,8 +56,6 @@ rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Games/Strategy
 install $RPM_SOURCE_DIR/%{icon} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
-gzip -9nf AUTHORS README ChangeLog NEWS
-
 %find_lang %{name}
 
 %clean
@@ -56,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS README ChangeLog NEWS
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/freeciv
 %{_applnkdir}/Games/Strategy/*
