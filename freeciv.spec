@@ -12,6 +12,8 @@ Source2:	freeciv-server.desktop
 Patch0:		freeciv-gettext.patch
 URL:		http://www.freeciv.org/
 Icon:		freeciv.gif
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gtk+-devel > 1.2.1
 BuildRequires:	imlib-devel >= 1.9.2
 BuildRequires:	gettext-devel
