@@ -2,17 +2,20 @@
 # Conditional build:
 %bcond_without gtk2		# build gtk1 client, not gtk2
 #
+
+%define		beta	beta3
+
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.14.0
-Release:	1
+Version:	1.14.1
+Release:	1.%{beta}
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	c506ec29b94ea516aaa02a107129cf10
+Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
+# Source0-md5:	3184042067d5fdd511dddcf5ff9b1ab7
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -53,7 +56,7 @@ O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
 %prep
-%setup -q -a 4
+%setup -q -a 4 -n %{name}-%{version}-%{beta}
 
 %build
 %configure2_13 \
