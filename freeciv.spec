@@ -1,6 +1,6 @@
 #
 
-%define		beta	beta7
+%define		beta	beta8
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -12,7 +12,7 @@ Release:	0.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
-# Source0-md5:	f5f7faf457d5139249d64c3c91ffd2f5
+# Source0-md5:	7f564c99eae4c0e90c9bac37bfd76fde
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
