@@ -2,12 +2,13 @@ Summary:     FREE CIVilization clone
 Summary(pl): Niekomercyjny klon CIVilization
 Name:        freeciv
 Version:     1.7.1
-Release:     1
+Release:     2
 Copyright:   GPL
 Source0:     ftp://freeciv.ultraviolet.org/pub/freeciv/%{name}-%{version}.tar.bz2
 Source1:     freeciv-client.wmconfig
 Source2:     freeciv-server.wmconfig
 Patch0:      freeciv-cfg.patch
+Patch1:      ftp://freeciv.ultraviolet.org/pub/freeciv/xaw3d.diff
 URL:         http://www.freeciv.org/
 Icon:        %{name}.gif
 Group:       X11/Games/Strategy
@@ -25,10 +26,15 @@ poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym przez komputer.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" \
-./configure --prefix=/usr/X11R6
+aclocal
+automake --gnu --include-deps Makefile
+autoconf
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
+	--prefix=/usr/X11R6
 make
 
 %install
@@ -59,6 +65,11 @@ rm -rf $RPM_BUILD_ROOT
 /usr/X11R6/lib/X11/app-defaults/Freeciv
 
 %changelog
+* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.7.1-2]
+- added using LDFLAGS="-s" to ./configure enviroment,
+- added patch from freeciv contrib for using Xaw3d library instead Xaw.
+
 * Sat Aug 22 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.7.0-2]
 - removed CHANGES from %doc,
