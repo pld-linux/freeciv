@@ -8,5 +8,5 @@ Exec=civserver
 Icon=freeciv.png
 Terminal=true
 Type=Application
-Categories=Application;Game;StrategyGame;
+Categories=GTK;Game;StrategyGame;
 # vi: encoding=utf-8
