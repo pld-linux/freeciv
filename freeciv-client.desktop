@@ -3,5 +3,6 @@ Name=FREE CIVilization
 Comment=Free Civilization clone game
 Comment[pl]=Niekomercyjny klon gry Civilization
 Exec=civclient
+Icon=freeciv.gif
 Terminal=0
 Type=Application

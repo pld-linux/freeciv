@@ -4,5 +4,6 @@ Name[pl]=Konsola serwera gry FREE CIVilization
 Comment=Free Civilization clone game server console
 Comment[pl]=Konsola serwera niekomercyjnego klonu gry Civilization
 Exec=xterm -T 'Free civilization server console' -e /usr/X11R6/bin/civserver
+Icon=freeciv.gif
 Terminal=0
 Type=Application
