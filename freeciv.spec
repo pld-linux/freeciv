@@ -1,6 +1,6 @@
 #
 # Conditional build:
-#  _with_gtk2		build gtk2 client, not gtk
+# _with_gtk2		build gtk2 client, not gtk
 #
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -21,17 +21,16 @@ Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
 URL:		http://www.freeciv.org/
+BuildRequires:	SDL_mixer-devel
 BuildRequires:	esound-devel
 %{!?_with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
 %{?_with_gtk2:BuildRequires:	gtk+2-devel}
 %{!?_with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
-BuildRequires:	SDL_mixer-devel
-Requires:	esound
 Requires:	SDL_mixer
+Requires:	esound
 %{!?_with_gtk2:Requires:	gtk+ > 1.2.1}
-%{?_with_gtk2:Requires:		gtk+2}
 %{!?_with_gtk2:Requires:	imlib >= 1.9.2}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,10 +43,10 @@ against computer-AI players.
 Clon del juego Civilization.
 
 %description -l pl
-Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sid'a
-Meiers'a. Jest to gra strategiczna pod X Window. Mo¿esz graæ w ni± z
-innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym
-przez komputer.
+Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida
+Meiersa. Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w
+ni± z innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom"
+zarz±dzanym przez komputer.
 
 %description -l pt_BR
 O FreeCiv é uma implementação do Civilization II para o Sistema X
@@ -60,6 +59,7 @@ Window.
 %configure2_13 \
 %{!?_with_gtk2:	--enable-client=gtk} \
 %{?_with_gtk2:	--enable-client=gtk2}
+
 %{__make}
 
 %install
