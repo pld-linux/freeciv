@@ -1,18 +1,15 @@
 #
-
-%define		beta	beta8
-
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.0
-Release:	0.%{beta}.1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
-# Source0-md5:	7f564c99eae4c0e90c9bac37bfd76fde
+Source0:	ftp://ftp.freeciv.org/freeciv/stable/freeciv-2.0.0.tar.bz2
+# Source0-md5:	fa7170026cc2aefdafd43b27a4bfaf80
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -78,7 +75,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4 -a 6 -n %{name}-%{version}-%{beta}
+%setup -q -a 4 -a 6
 
 %build
 cp -f %{_datadir}/automake/config.sub bootstrap
