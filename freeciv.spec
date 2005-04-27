@@ -4,12 +4,12 @@ Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.0.0
+Version:	2.0.1
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/stable/freeciv-2.0.0.tar.bz2
-# Source0-md5:	fa7170026cc2aefdafd43b27a4bfaf80
+Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
+# Source0-md5:	b1a2d0b493af74f40179ef78ed2b6070
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -123,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
-%{_mandir}/man6/civserver.6.gz
+%{_mandir}/man6/civserver.6*
 
 %files client
 %defattr(644,root,root,755)
@@ -138,4 +138,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
-%{_mandir}/man6/civclient.6.gz
+%{_mandir}/man6/civclient.6*
