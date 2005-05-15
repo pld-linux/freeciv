@@ -7,20 +7,15 @@ Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	1.14.2
-Release:	2
+Version:	2.0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	280770591c8f87ac542dcd50702da205
+# Source0-md5:	b1a2d0b493af74f40179ef78ed2b6070
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
-Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds1.tar.gz
-# Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
-Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds.spec
-# Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
-Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
@@ -80,10 +75,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4
-%patch0 -p1
-
-mv -f po/{no,nb}.po
+%setup -q 
 
 %build
 cp -f %{_datadir}/automake/config.sub .
@@ -101,12 +93,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm $RPM_BUILD_ROOT%{_datadir}/freeciv/Freeciv
-
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
-cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
 
 %find_lang %{name}
 
@@ -131,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
+%{_mandir}/man6/civserver.6.gz
 
 %files client
 %defattr(644,root,root,755)
@@ -139,6 +128,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
-%{_datadir}/%{name}/stdsounds
 %{_datadir}/%{name}/trident
+%{_datadir}/%{name}/isophex
+%{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
+%{_mandir}/man6/civclient.6.gz
+%{_bindir}/civmanual
