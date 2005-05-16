@@ -23,6 +23,7 @@ BuildRequires:	esound-devel
 %{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
 %{?with_gtk2:BuildRequires:	gtk+2-devel}
 %{!?with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
+BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
