@@ -79,7 +79,7 @@ Ten pakiet zawiera server gry Freeciv.
 %setup -q 
 
 %build
-cp -f %{_datadir}/automake/config.sub .
+cp -f /usr/share/automake/config.sub bootstrap
 %configure2_13 \
 %{!?with_gtk2:	--enable-client=gtk} \
 %{?with_gtk2:	--enable-client=gtk2}
