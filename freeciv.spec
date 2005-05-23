@@ -8,14 +8,16 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	b1a2d0b493af74f40179ef78ed2b6070
-Source1:	%{name}-client.desktop
-Source2:	%{name}-server.desktop
-Source3:	%{name}.png
+Source1:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds3.tar.gz
+# Source1-md5:	77215914712f2f351092918f5e41e39e
+Source2:	%{name}-client.desktop
+Source3:	%{name}-server.desktop
+Source4:	%{name}.png
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
@@ -62,7 +64,6 @@ This package contains Freeciv game client.
 %description client -l pl
 Ten pakiet zawiera klienta gry Freeciv.
 
-
 %package server
 Summary:	Freeciv game server
 Summary(pl):	Serwer gry Freeciv
@@ -76,7 +77,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q 
+%setup -q -a1
 
 %build
 cp -f /usr/share/automake/config.sub bootstrap
@@ -94,8 +95,10 @@ install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE2} %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE4} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+cp -rf data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %find_lang %{name}
 
@@ -133,5 +136,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
+%{_datadir}/%{name}/stdsounds
 %{_mandir}/man6/civclient.6.gz
 %{_bindir}/civmanual
