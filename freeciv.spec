@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without gtk2		# build gtk1 client, not gtk2
-
+#
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
@@ -29,6 +29,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 Free clone of Sid Meier's Civilization. Free Civilization clone for
@@ -89,8 +91,7 @@ cp -f /usr/share/automake/config.sub bootstrap
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
-	$RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_appdefsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -123,11 +124,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
-%{_mandir}/man6/civserver.6.gz
+%{_mandir}/man6/civserver.6*
 
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/civclient
+%attr(755,root,root) %{_bindir}/civmanual
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/isotrident
@@ -137,5 +139,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/stdsounds
-%{_mandir}/man6/civclient.6.gz
-%{_bindir}/civmanual
+%{_mandir}/man6/civclient.6*
