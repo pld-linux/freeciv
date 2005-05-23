@@ -30,8 +30,6 @@ BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
-
 %description
 Free clone of Sid Meier's Civilization. Free Civilization clone for
 unix and X. This is multiplayer strategic game and you can also play
@@ -83,7 +81,7 @@ Ten pakiet zawiera server gry Freeciv.
 
 %build
 cp -f /usr/share/automake/config.sub bootstrap
-%configure2_13 \
+%configure \
 %{!?with_gtk2:	--enable-client=gtk} \
 %{?with_gtk2:	--enable-client=gtk2}
 
@@ -91,7 +89,7 @@ cp -f /usr/share/automake/config.sub bootstrap
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_appdefsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
