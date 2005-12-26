@@ -8,7 +8,7 @@ Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -18,8 +18,10 @@ Source1:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds3.tar.gz
 Source2:	%{name}-client.desktop
 Source3:	%{name}-server.desktop
 Source4:	%{name}.png
+Patch0:		%{name}-link.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	esound-devel
 %{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
@@ -78,9 +80,13 @@ Ten pakiet zawiera server gry Freeciv.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub bootstrap
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 %{!?with_gtk2:	--enable-client=gtk} \
 %{?with_gtk2:	--enable-client=gtk2}
