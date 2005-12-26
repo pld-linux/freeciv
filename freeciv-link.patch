@@ -1,0 +1,28 @@
+--- freeciv-2.0.7/configure.ac.orig	2005-10-13 09:45:45.000000000 +0200
++++ freeciv-2.0.7/configure.ac	2005-12-26 16:30:36.000000000 +0100
+@@ -440,7 +440,7 @@
+ dnl Checks for additional server libraries:
+ if test x$server = xtrue; then
+     dnl Some systems (e.g., BeOS) need this lib
+-    AC_CHECK_LIB(bind, gethostbyaddr, SERVER_LIBS="-lbind $SERVER_LIBS")
++    AC_CHECK_FUNC(gethostbyaddr,,[AC_CHECK_LIB(bind, gethostbyaddr, SERVER_LIBS="-lbind $SERVER_LIBS")])
+ 
+     dnl Readline library and header files.
+     FC_HAS_READLINE()
+@@ -501,13 +501,13 @@
+ dnl If the AC_CHECK_FUNCS check finds the function, we don't look any
+ dnl further.  This is rumoured to prevent choosing the wrong libs on IRIX.
+ if test $ac_cv_func_gethostbyname = no; then
+-  AC_CHECK_LIB(nsl, gethostbyname, LIBS="-lnsl $LIBS")
++  AC_SEARCH_LIBS(gethostbyname, nsl)
+ fi
+ if test $ac_cv_func_connect = no; then
+-  AC_CHECK_LIB(socket, connect, LIBS="-lsocket $LIBS")
++  AC_SEARCH_LIBS(connect, socket)
+ fi
+ if test $ac_cv_func_bind = no; then
+-  AC_CHECK_LIB(bind, gethostbyaddr, LIBS="-lbind $LIBS")
++  AC_SEARCH_LIBS(gethostbyaddr, bind)
+ fi
+ 
+ dnl The use of both AC_FUNC_VSNPRINTF and AC_CHECK_FUNCS(vsnprintf) is
