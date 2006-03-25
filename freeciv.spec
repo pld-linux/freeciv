@@ -1,15 +1,17 @@
 #
+%define		beta	beta1
+
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
 Summary(pl):	Niekomercyjny klon CIVilization
 Summary(pt_BR):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.0.1
-Release:	0.1
+Version:	2.1.0
+Release:	0.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
-Source0:	ftp://ftp.freeciv.org/freeciv/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	b1a2d0b493af74f40179ef78ed2b6070
+Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
+# Source0-md5:	814c077a8d8c609f197b5fd63cfcbbe3
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
@@ -17,8 +19,6 @@ Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds1.tar.gz
 # Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
 Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds.spec
 # Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
-Source6:	ftp://ftp.freeciv.org/freeciv/contrib/tilesets/isophex/isophex-1.14.99.tar.gz
-# Source6-md5:	041831c927491e1226b8a56f955b545c
 Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
@@ -75,13 +75,11 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4 -a 6
+%setup -q -a 4 -n %{name}-%{version}-%{beta}
 
 %build
 cp -f %{_datadir}/automake/config.sub bootstrap
-%configure2_13 \
-	--enable-client=gtk2
-
+%configure2_13 
 %{__make}
 
 %install
@@ -96,9 +94,6 @@ install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
 cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
-install isophex.tilespec $RPM_BUILD_ROOT%{_datadir}/freeciv
-install -d $RPM_BUILD_ROOT%{_datadir}/freeciv/isophex
-install isophex/* $RPM_BUILD_ROOT%{_datadir}/freeciv/isophex
 
 %find_lang %{name}
 
@@ -119,7 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
 %{_datadir}/%{name}/default
-%{_datadir}/%{name}/history
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
@@ -130,6 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/civclient
 %attr(755,root,root) %{_bindir}/civmanual
 %{_desktopdir}/%{name}-client.desktop
+%{_datadir}/%{name}/amplio
 %{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
