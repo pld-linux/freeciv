@@ -1,5 +1,5 @@
 #
-%define		beta	beta1
+%define		beta	beta2
 
 Summary:	FREE CIVilization clone
 Summary(es):	Clon del juego Civilization
@@ -11,14 +11,14 @@ Release:	0.%{beta}.1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	ftp://ftp.freeciv.org/freeciv/beta/%{name}-%{version}-%{beta}.tar.bz2
-# Source0-md5:	814c077a8d8c609f197b5fd63cfcbbe3
+# Source0-md5:	8f8d7f9840d89ea850f907a54fa32f14
 Source1:	%{name}-client.desktop
 Source2:	%{name}-server.desktop
 Source3:	%{name}.png
-Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds1.tar.gz
-# Source4-md5:	28a54fbe3ddb67a9b8fe85b8332415e1
-Source5:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/OLD/stdsounds.spec
-# Source5-md5:	6e3e2bc551eb49ca87c4f0085991db15
+Source4:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds3.tar.gz
+# Source4-md5:	77215914712f2f351092918f5e41e39e
+Source5:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland2/freeland-normal-2.0.0.tar.gz
+# Source5-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
@@ -75,7 +75,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a 4 -n %{name}-%{version}-%{beta}
+%setup -q -a 4 -a 5 -n %{name}-%{version}-%{beta}
 
 %build
 cp -f %{_datadir}/automake/config.sub bootstrap
@@ -92,8 +92,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_datadir}/freeciv/stdsounds.soundspec
-cp -ar stdsounds $RPM_BUILD_ROOT%{_datadir}/freeciv
+cp -f freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -rf freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %find_lang %{name}
 
@@ -126,6 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/amplio
 %{_datadir}/%{name}/freeciv.rc*
+%{_datadir}/%{name}/freeland
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
