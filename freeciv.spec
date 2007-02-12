@@ -2,9 +2,9 @@
 %define		beta	beta2
 
 Summary:	FREE CIVilization clone
-Summary(es):	Clon del juego Civilization
-Summary(pl):	Niekomercyjny klon CIVilization
-Summary(pt_BR):	Clone do jogo Civilization
+Summary(es.UTF-8):   Clon del juego Civilization
+Summary(pl.UTF-8):   Niekomercyjny klon CIVilization
+Summary(pt_BR.UTF-8):   Clone do jogo Civilization
 Name:		freeciv
 Version:	2.1.0
 Release:	0.%{beta}.1
@@ -34,22 +34,22 @@ Free clone of Sid Meier's Civilization. Free Civilization clone for
 unix and X. This is multiplayer strategic game and you can also play
 against computer-AI players.
 
-%description -l es
+%description -l es.UTF-8
 Clon del juego Civilization.
 
-%description -l pl
+%description -l pl.UTF-8
 Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida Meiera.
-Jest to gra strategiczna dla systemu X Window. Mo¿na graæ w ni± z
-innymi osobami poprzez sieæ, a tak¿e przeciwko "graczom" zarz±dzanym
+Jest to gra strategiczna dla systemu X Window. MoÅ¼na graÄ‡ w niÄ… z
+innymi osobami poprzez sieÄ‡, a takÅ¼e przeciwko "graczom" zarzÄ…dzanym
 przez komputer.
 
-%description -l pt_BR
-O FreeCiv é uma implementação do Civilization II para o Sistema X
+%description -l pt_BR.UTF-8
+O FreeCiv Ã© uma implementaÃ§Ã£o do Civilization II para o Sistema X
 Window.
 
 %package client
 Summary:	Freeciv game client
-Summary(pl):	Klient gry Freeciv
+Summary(pl.UTF-8):   Klient gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL_mixer
@@ -58,20 +58,20 @@ Requires:	esound
 %description client
 This package contains Freeciv game client.
 
-%description client -l pl
+%description client -l pl.UTF-8
 Ten pakiet zawiera klienta gry Freeciv.
 
 
 %package server
 Summary:	Freeciv game server
-Summary(pl):	Serwer gry Freeciv
+Summary(pl.UTF-8):   Serwer gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 
 %description server
 This package contans Freeciv game server.
 
-%description server -l pl
+%description server -l pl.UTF-8
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
