@@ -3,9 +3,9 @@
 %bcond_without	gtk2		# build gtk1 client, not gtk2
 #
 Summary:	FREE CIVilization clone
-Summary(es.UTF-8):   Clon del juego Civilization
-Summary(pl.UTF-8):   Niekomercyjny klon CIVilization
-Summary(pt_BR.UTF-8):   Clone do jogo Civilization
+Summary(es.UTF-8):	Clon del juego Civilization
+Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
+Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.0.8
 Release:	1
@@ -52,7 +52,7 @@ Window.
 
 %package client
 Summary:	Freeciv game client
-Summary(pl.UTF-8):   Klient gry Freeciv
+Summary(pl.UTF-8):	Klient gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL_mixer
@@ -68,7 +68,7 @@ Ten pakiet zawiera klienta gry Freeciv.
 
 %package server
 Summary:	Freeciv game server
-Summary(pl.UTF-8):   Serwer gry Freeciv
+Summary(pl.UTF-8):	Serwer gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 
