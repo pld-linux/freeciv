@@ -7,12 +7,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.0.8
+Version:	2.0.9
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	9ebd5899c2c78362e0e2c68791673a88
+# Source0-md5:	7bfa40220bd8e19a263ca247202682ce
 Source1:	ftp://ftp.freeciv.org/freeciv/contrib/sounds/sets/stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
 Source2:	%{name}-client.desktop
