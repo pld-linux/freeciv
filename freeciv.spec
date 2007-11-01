@@ -16,7 +16,6 @@ Source4:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.ta
 # Source4-md5:	77215914712f2f351092918f5e41e39e
 Source5:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 # Source5-md5:	c9f061fca82aa50a19fbbc89c06ff81d
-Patch0:		%{name}-locale_names.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	automake
