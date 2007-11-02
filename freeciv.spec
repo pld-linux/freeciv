@@ -1,3 +1,5 @@
+# TODO
+# - dozen of unpackaged files
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):   Clon del juego Civilization
 Summary(pl.UTF-8):   Niekomercyjny klon CIVilization
