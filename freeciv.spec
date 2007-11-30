@@ -1,7 +1,6 @@
 #
 # TODO
 # - dozen of unpackaged files
-# - consider using desktop file included with project (for clinet icon presentation)
 #
 # Conditional build:
 %bcond_without	gtk2		# build gtk1 client, not gtk2
@@ -11,20 +10,18 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.1.0
+Version:	2.1.1
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	f640aa48abca0a235220d6df22b9bc82
+# Source0-md5:	cbbe72822d6698d9a66db2f383e2a421
 Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
 Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 # Source2-md5:	c9f061fca82aa50a19fbbc89c06ff81d
-Source3:	%{name}-client.desktop
-Source4:	%{name}-server.desktop
-Source5:	%{name}.png
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
@@ -87,6 +84,7 @@ Ten pakiet zawiera server gry Freeciv.
 %prep
 %setup -q -a1 -a2
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal}
@@ -106,9 +104,9 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE3} %{SOURCE4} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE5} $RPM_BUILD_ROOT%{_pixmapsdir}
-
+cp -f client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
+cp -f server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
+cp -f data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -rf data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -f freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -rf freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
