@@ -3,19 +3,19 @@
 # - dozen of unpackaged files
 #
 # Conditional build:
-%bcond_without	gtk2		# build gtk1 client, not gtk2
+%bcond_without	gtk		# do not build gtk client
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.1.1
+Version:	2.1.2
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	cbbe72822d6698d9a66db2f383e2a421
+# Source0-md5:	358d140f545c4ac9e05c4e2b13de7a55
 Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
 Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
@@ -27,9 +27,7 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	esound-devel
-%{!?with_gtk2:BuildRequires:	gtk+-devel > 1.2.1}
-%{?with_gtk2:BuildRequires:	gtk+2-devel}
-%{!?with_gtk2:BuildRequires:	imlib-devel >= 1.9.2}
+%{?with_gtk:BuildRequires:	gtk+2-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
@@ -60,8 +58,6 @@ Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL_mixer
 Requires:	esound
-%{!?with_gtk2:Requires:	gtk+ > 1.2.1}
-%{!?with_gtk2:Requires:	imlib >= 1.9.2}
 
 %description client
 This package contains Freeciv game client.
@@ -92,8 +88,7 @@ Ten pakiet zawiera server gry Freeciv.
 %{__autoheader}
 %{__automake}
 %configure \
-%{!?with_gtk2:	--enable-client=gtk} \
-%{?with_gtk2:	--enable-client=gtk2}
+%{?with_gtk:	--enable-client=gtk}
 
 %{__make}
 
