@@ -4,8 +4,8 @@
 #
 # Conditional build:
 %bcond_without	gtk		# do not build gtk client
-%bcond_without  ggz_client	# do not build ggz client
-%bcond_without  ggz_server	# do not build ggz server
+%bcond_without  ggz_client	# build without ggz client
+%bcond_without  ggz_server	# build without ggz server
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
