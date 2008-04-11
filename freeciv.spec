@@ -61,6 +61,7 @@ Summary:	Freeciv game client
 Summary(pl.UTF-8):	Klient gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-server = %{version}-%{release}
 Requires:	SDL_mixer
 Requires:	esound
 
