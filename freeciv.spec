@@ -64,6 +64,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-server = %{version}-%{release}
 Requires:	SDL_mixer
 Requires:	esound
+Suggests:	%{name} = %{version}-%{release}
 
 %description client
 This package contains Freeciv game client.
