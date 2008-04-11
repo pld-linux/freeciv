@@ -24,6 +24,7 @@ Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-no
 # Source2-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-ggz.patch
 URL:		http://www.freeciv.org/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
@@ -88,16 +89,19 @@ Ten pakiet zawiera server gry Freeciv.
 %setup -q -a1 -a2
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-%{__aclocal}
+rm acinclude.m4
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
-%{?with_gtk:	--enable-client=gtk}
-%{!?with_ggz_client:	--without-ggz-client}
-%{!?with_ggz_server:	--without-ggz-server}
+	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
+	%{?with_gtk:	--enable-client=gtk} \
+	%{!?with_ggz_client:	--without-ggz-client} \
+	%{!?with_ggz_server:	--without-ggz-server}
 
 %{__make}
 
