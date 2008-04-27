@@ -12,12 +12,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.1.3
+Version:	2.1.4
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	2b5e96c6464212273150f8d3ec0bf7f7
+# Source0-md5:	fdad700fa15205adcb561974e206f749
 Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
 Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
@@ -90,7 +90,6 @@ Ten pakiet zawiera server gry Freeciv.
 %patch2 -p1
 
 %build
-rm acinclude.m4
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
@@ -118,6 +117,7 @@ cp -f freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -rf freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
 %find_lang %{name}
 
@@ -142,6 +142,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/civserver.6*
+%{_sysconfdir}/ggzd/games/civserver.dsc
+%{_sysconfdir}/ggzd/rooms/civserver.room
 
 %files client
 %defattr(644,root,root,755)
