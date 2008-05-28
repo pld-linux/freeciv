@@ -1,7 +1,4 @@
 #
-# TODO
-# - dozen of unpackaged files
-#
 # Conditional build:
 %bcond_without	gtk		# do not build gtk client
 %bcond_without  ggz_client	# build without ggz client
@@ -13,7 +10,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.1.4
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -111,6 +108,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 cp -f client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
 cp -f server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
+rm $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+
 cp -f data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -rf data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -f freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -150,14 +149,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/civclient
 %attr(755,root,root) %{_bindir}/civmanual
 %{_desktopdir}/%{name}-client.desktop
+%{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio
+%{_datadir}/%{name}/buildings
+%{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/freeland
+%{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
-%{_datadir}/%{name}/trident
-%{_datadir}/%{name}/flags
-%{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/stdsounds
+%{_datadir}/%{name}/themes
+%{_datadir}/%{name}/trident
+%{_datadir}/%{name}/wonders
 %{_mandir}/man6/civclient.6*
+%{_iconsdir}/hicolor/*/apps/*
