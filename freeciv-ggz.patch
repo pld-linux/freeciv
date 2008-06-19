@@ -1,0 +1,12 @@
+diff -urN freeciv-2.1.3/m4/ggz.m4 freeciv-2.1.3.new/m4/ggz.m4
+--- freeciv-2.1.3/m4/ggz.m4	2008-04-11 19:19:23.313727512 +0200
++++ freeciv-2.1.3.new/m4/ggz.m4	2008-04-11 19:18:45.141902683 +0200
+@@ -999,7 +999,7 @@
+       AC_GGZ_GGZDMOD([ggz_server="yes"], [ggz_server="no"])
+     fi
+     if test "$ggz_server" = "yes"; then
+-      AC_GGZ_SERVER
++      AC_GGZ_SERVER([], [force])
+       AC_DEFINE(GGZ_SERVER, 1, [Server support for GGZ])
+     else
+       if test "$try_ggz_server" = "yes"; then
