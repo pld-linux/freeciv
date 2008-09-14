@@ -9,12 +9,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.1.5
+Version:	2.1.6
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://dl.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	1845f51077569e4033a7125910462184
+# Source0-md5:	377a44273cdd0c2cab4e1c0a457fc7c7
 Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
 Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
@@ -27,9 +27,9 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	esound-devel
-%{?with_gtk:BuildRequires:	gtk+2-devel}
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 %{?with_ggz_server:BuildRequires:	ggz-server-devel}
+%{?with_gtk:BuildRequires:	gtk+2-devel}
 BuildRequires:	libggz-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
@@ -47,8 +47,8 @@ Clon del juego Civilization.
 %description -l pl.UTF-8
 Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida Meiera.
 Jest to gra strategiczna dla systemu X Window. Można grać w nią z
-innymi osobami poprzez sieć, a także przeciwko "graczom" zarządzanym
-przez komputer.
+innymi osobami poprzez sieć, a także przeciwko "graczom"
+zarządzanym przez komputer.
 
 %description -l pt_BR.UTF-8
 O FreeCiv é uma implementação do Civilization II para o Sistema X
@@ -118,6 +118,12 @@ cp -rf freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
+%if %{with ggz_server}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/{games,rooms}
+install data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
+install data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
+%endif
+
 %find_lang %{name}
 
 %clean
@@ -141,8 +147,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/civserver.6*
-%{_sysconfdir}/ggzd/games/civserver.dsc
-%{_sysconfdir}/ggzd/rooms/civserver.room
+%{?with_ggz_server:%{_sysconfdir}/ggzd/games/civserver.dsc}
+%{?with_ggz_server:%{_sysconfdir}/ggzd/rooms/civserver.room}
 
 %files client
 %defattr(644,root,root,755)
