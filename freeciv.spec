@@ -47,8 +47,8 @@ Clon del juego Civilization.
 %description -l pl.UTF-8
 Freeciv jest to niekomercyjny (GPL) klon gry Civilization Sida Meiera.
 Jest to gra strategiczna dla systemu X Window. Można grać w nią z
-innymi osobami poprzez sieć, a także przeciwko "graczom"
-zarządzanym przez komputer.
+innymi osobami poprzez sieć, a także przeciwko "graczom" zarządzanym
+przez komputer.
 
 %description -l pt_BR.UTF-8
 O FreeCiv é uma implementação do Civilization II para o Sistema X
