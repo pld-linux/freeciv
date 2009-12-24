@@ -25,9 +25,9 @@
  Type=Application
  Categories=GTK;Game;StrategyGame;
 +# vi: encoding=utf-8
---- freeciv-2.1.1/bootstrap/freeciv-server.desktop.in~	2007-11-30 21:04:54.000000000 +0100
-+++ freeciv-2.1.1/bootstrap/freeciv-server.desktop.in	2007-11-30 21:03:10.000000000 +0100
-@@ -4,7 +4,8 @@
+--- freeciv-2.2.0-beta1/bootstrap/freeciv-server.desktop.in~	2009-12-13 10:57:16.000000000 +0000
++++ freeciv-2.2.0-beta1/bootstrap/freeciv-server.desktop.in	2009-12-24 10:33:18.558453813 +0000
+@@ -3,14 +3,16 @@
  Name[ca]=Freeciv server
  Name[es]=Freeciv server
  Name[fr]=Freeciv server
@@ -35,9 +35,8 @@
 +Name[nb]=Freeciv server
 +Name[pl]=Serwer Freeciv
  Name[pt]=Freeciv server
- Name[tr]=Freeciv sunucusu
  Comment=Turn-based strategy game inspired by the history of human civilization
-@@ -12,13 +13,15 @@
+ Comment[ca]=Joc d'estratègia inspirat en la història de la civilització humana
  Comment[da]=Strategispil inspireret af den menneskelige civilisations historie
  Comment[de]=Rundenbasiertes Strategiespiel, inspiriert durch die Geschichte der menschlichen Zivilisation
  Comment[fi]=Ihmiskunnan historian inspiroima vuoropohjainen strategiapeli
@@ -46,10 +45,8 @@
 +Comment[pl]=Turowa gra strategiczna zainspirowana historią ludzkiej cywilizacji
  Comment[pt]=Jogo de estratégia por turnos inspirado na História da civilização humana
  Comment[sv]=Turordningsbaserat strategispel inspirerat av den mänskliga
- Comment[tr]=İnsanlık tarihinden esinlenerek yapılmış sıra tabanlı strateji oyunu
  Exec=civserver
--Icon=freeciv-server
-+Icon=freeciv-server.png
+@@ -18,4 +20,5 @@
  StartupNotify=true
  Terminal=true
  Type=Application
