@@ -1,5 +1,5 @@
 #
-# TODO: ftp://ftp.freeciv.org seems to be dead, so spec downloads stdsounds3.tar.gz and 
+# TODO: ftp://ftp.freeciv.org seems to be dead, so spec downloads stdsounds3.tar.gz and
 #	freeland-normal-2.0.0.tar.gz from DISTFILES until somebody find better external source
 #
 # Conditional build:
@@ -140,7 +140,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS README ChangeLog NEWS
-%{_pixmapsdir}/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
 
@@ -155,6 +154,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/freeciv-server.6*
+%{_iconsdir}/hicolor/*/apps/freeciv-server.png
+%{_pixmapsdir}/freeciv-server.png
 %{?with_ggz_server:%dir %{_sysconfdir}/ggzd}
 %{?with_ggz_server:%dir %{_sysconfdir}/ggzd/games}
 %{?with_ggz_server:%dir %{_sysconfdir}/ggzd/rooms}
@@ -182,4 +183,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/wonders
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
-%{_iconsdir}/hicolor/*/apps/*
+%{_iconsdir}/hicolor/*/apps/freeciv-client.png
+%{_pixmapsdir}/freeciv-client.png
