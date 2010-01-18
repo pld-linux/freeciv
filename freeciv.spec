@@ -7,7 +7,7 @@
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
 #
-%define		_beta	beta1
+%define		_beta	beta3
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
@@ -18,7 +18,7 @@ Release:	0.%{_beta}.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}-%{_beta}.tar.bz2
-# Source0-md5:	573b95710ef75fd4860492d58162e948
+# Source0-md5:	1342cf3e0ff8cb55f67f27c45c10da6f
 #Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
 Source1:	stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
