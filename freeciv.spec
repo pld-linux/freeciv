@@ -134,9 +134,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS README ChangeLog NEWS
-%{_pixmapsdir}/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
+%{_pixmapsdir}/*.png
 
 %files server
 %defattr(644,root,root,755)
@@ -149,11 +149,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/civserver.6*
-%{?with_ggz_server:%dir %{_sysconfdir}/ggzd}
-%{?with_ggz_server:%dir %{_sysconfdir}/ggzd/games}
-%{?with_ggz_server:%dir %{_sysconfdir}/ggzd/rooms}
-%{?with_ggz_server:%{_sysconfdir}/ggzd/games/civserver.dsc}
-%{?with_ggz_server:%{_sysconfdir}/ggzd/rooms/civserver.room}
+
+%if %{with ggz_server}
+%dir %{_sysconfdir}/ggzd
+%dir %{_sysconfdir}/ggzd/games
+%dir %{_sysconfdir}/ggzd/rooms
+%{_sysconfdir}/ggzd/games/civserver.dsc
+%{_sysconfdir}/ggzd/rooms/civserver.room
+%endif
 
 %files client
 %defattr(644,root,root,755)
@@ -175,4 +178,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
 %{_mandir}/man6/civclient.6*
-%{_iconsdir}/hicolor/*/apps/*
+%{_iconsdir}/hicolor/*/apps/*.png
