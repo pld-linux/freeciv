@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.1.11
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -149,6 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/civserver.6*
+%{?with_ggz_server:%dir %{_sysconfdir}/ggzd}
 %{?with_ggz_server:%dir %{_sysconfdir}/ggzd/games}
 %{?with_ggz_server:%dir %{_sysconfdir}/ggzd/rooms}
 %{?with_ggz_server:%{_sysconfdir}/ggzd/games/civserver.dsc}
