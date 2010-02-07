@@ -3,7 +3,7 @@
 %bcond_without	gtk		# do not build gtk client
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
-#
+
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
@@ -22,7 +22,7 @@ Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-no
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
-URL:		http://freeciv.wikia.com
+URL:		http://freeciv.wikia.com/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -95,9 +95,9 @@ Ten pakiet zawiera server gry Freeciv.
 %{__automake}
 %configure \
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
-	%{?with_gtk:	--enable-client=gtk} \
-	%{!?with_ggz_client:	--without-ggz-client} \
-	%{!?with_ggz_server:	--without-ggz-server}
+	%{?with_gtk:--enable-client=gtk} \
+	%{!?with_ggz_client:--without-ggz-client} \
+	%{!?with_ggz_server:--without-ggz-server}
 
 %{__make}
 
@@ -108,22 +108,22 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -f client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
-cp -f server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
+cp -a client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
+cp -a server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
 rm $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
-cp -f data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
-cp -rf data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -f freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -rf freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -a data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
 %if %{with ggz_server}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/{games,rooms}
-install data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
-install data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
+cp -a data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
+cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
 %endif
 
 %find_lang %{name}
