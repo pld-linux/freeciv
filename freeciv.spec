@@ -37,6 +37,7 @@ BuildRequires:	esound-devel
 %{?with_gtk:BuildRequires:	gtk+2-devel}
 BuildRequires:	libggz-devel
 BuildRequires:	libpng12-devel
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
