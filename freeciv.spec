@@ -1,23 +1,28 @@
 #
+# TODO: ftp://ftp.freeciv.org seems to be dead, so spec downloads stdsounds3.tar.gz and
+#	freeland-normal-2.0.0.tar.gz from DISTFILES until somebody find better external source
+#
 # Conditional build:
 %bcond_without	gtk		# do not build gtk client
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
-
+#
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.1.11
-Release:	2
+Version:	2.2.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	b064e5949d211a46a9d6d050f3c98959
-Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
+# Source0-md5:	49c08904d2402fe46248641a8bbd9ef3
+#Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
+Source1:	stdsounds3.tar.gz
 # Source1-md5:	77215914712f2f351092918f5e41e39e
-Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
+#Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
+Source2:	freeland-normal-2.0.0.tar.gz
 # Source2-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
@@ -31,6 +36,7 @@ BuildRequires:	esound-devel
 %{?with_ggz_server:BuildRequires:	ggz-server-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel}
 BuildRequires:	libggz-devel
+BuildRequires:	libpng12-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
@@ -89,6 +95,7 @@ Ten pakiet zawiera server gry Freeciv.
 %patch2 -p1
 
 %build
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
@@ -136,11 +143,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README ChangeLog NEWS
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
-%{_pixmapsdir}/*.png
 
 %files server
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/civserver
+%attr(755,root,root) %{_bindir}/freeciv-server
 %{_desktopdir}/%{name}-server.desktop
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
@@ -148,7 +154,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
-%{_mandir}/man6/civserver.6*
+%{_mandir}/man6/freeciv-server.6*
+%{_iconsdir}/hicolor/*/apps/freeciv-server.png
+%{_pixmapsdir}/freeciv-server.png
 
 %if %{with ggz_server}
 %dir %{_sysconfdir}/ggzd
@@ -160,7 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files client
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/civclient
+%attr(755,root,root) %{_bindir}/freeciv-gtk2
 %attr(755,root,root) %{_bindir}/civmanual
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/*.*spec
@@ -177,5 +185,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
-%{_mandir}/man6/civclient.6*
-%{_iconsdir}/hicolor/*/apps/*.png
+%{_mandir}/man6/freeciv-client.6*
+%{_mandir}/man6/freeciv-gtk2.6*
+%{_iconsdir}/hicolor/*/apps/freeciv-client.png
+%{_pixmapsdir}/freeciv-client.png
