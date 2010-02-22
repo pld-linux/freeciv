@@ -32,6 +32,7 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	esound-devel
+BuildRequires:	gettext-devel
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 %{?with_ggz_server:BuildRequires:	ggz-server-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel}
