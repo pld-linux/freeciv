@@ -1,0 +1,4 @@
+- updated to final 2.2.0 version
+- merge with DEVEL
+- add missing BR: libpng12-devel
+- call libtoolize
