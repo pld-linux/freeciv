@@ -34,10 +34,9 @@ BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gettext-devel
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
-%{?with_ggz_server:BuildRequires:	ggz-server-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel}
 BuildRequires:	libggz-devel
-BuildRequires:	libpng12-devel
+BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
