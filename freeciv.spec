@@ -1,7 +1,4 @@
 #
-# TODO: ftp://ftp.freeciv.org seems to be dead, so spec downloads stdsounds3.tar.gz and
-#	freeland-normal-2.0.0.tar.gz from DISTFILES until somebody find better external source
-#
 # Conditional build:
 %bcond_without	gtk		# do not build gtk client
 %bcond_without  ggz_client	# build without ggz client
@@ -12,18 +9,14 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.2.0
-Release:	2
+Version:	2.2.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	49c08904d2402fe46248641a8bbd9ef3
-#Source1:	ftp://ftp.freeciv.org/pub/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz
-Source1:	stdsounds3.tar.gz
-# Source1-md5:	77215914712f2f351092918f5e41e39e
-#Source2:	ftp://ftp.freeciv.org/pub/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
-Source2:	freeland-normal-2.0.0.tar.gz
-# Source2-md5:	c9f061fca82aa50a19fbbc89c06ff81d
+# Source0-md5:	b43269e38ecd32cb09850778befc72b3
+Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
+# Source1-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
@@ -90,7 +83,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a1 -a2
+%setup -q -a1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -190,6 +183,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
 %{_mandir}/man6/freeciv-client.6*
+%{_mandir}/man6/freeciv-ftwl.6*
 %{_mandir}/man6/freeciv-gtk2.6*
+%{_mandir}/man6/freeciv-sdl.6*
+%{_mandir}/man6/freeciv-win32.6*
+%{_mandir}/man6/freeciv-xaw.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
 %{_pixmapsdir}/freeciv-client.png
