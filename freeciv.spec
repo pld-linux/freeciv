@@ -9,12 +9,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.2.2
+Version:	2.2.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	fae46199dedaf0decc3b82dc06f95624
+# Source0-md5:	b324e3c59f029d0566482f584181a4b2
 Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 # Source1-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
@@ -24,7 +24,6 @@ URL:		http://freeciv.wikia.com/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	esound-devel
 BuildRequires:	gettext-devel
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel}
