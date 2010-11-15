@@ -17,7 +17,6 @@ Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
 # Source0-md5:	b324e3c59f029d0566482f584181a4b2
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
-# Source1-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
