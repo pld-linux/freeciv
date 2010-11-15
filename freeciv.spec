@@ -10,12 +10,13 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.2.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
 # Source0-md5:	b324e3c59f029d0566482f584181a4b2
-Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
+# NOTE: current version of freeland tiles does not work with newest freeciv version
+#Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 # Source1-md5:	c9f061fca82aa50a19fbbc89c06ff81d
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
@@ -82,7 +83,7 @@ This package contans Freeciv game server.
 Ten pakiet zawiera server gry Freeciv.
 
 %prep
-%setup -q -a1
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -171,7 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/buildings
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
-%{_datadir}/%{name}/freeland
+#%%{_datadir}/%{name}/freeland
 %{?with_gtk:%{_datadir}/%{name}/gtk_menus.xml}
 %{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
