@@ -114,7 +114,7 @@ rm $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 cp -a data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
+#cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/no
