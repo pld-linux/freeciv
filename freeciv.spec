@@ -9,12 +9,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.2.3
-Release:	4
+Version:	2.2.4
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	b324e3c59f029d0566482f584181a4b2
+# Source0-md5:	29dec5214b565c19d925cb82c4373831
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
@@ -110,15 +110,15 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 cp -a client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
 cp -a server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
-rm $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+%{__rm} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 cp -a data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 #cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
 #cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/no
-rm -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+%{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
 %{?with_gtk:cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}}
 
