@@ -4,7 +4,7 @@
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
 #
-%define		_beta	beta3
+%define		_beta	beta4
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
@@ -15,7 +15,7 @@ Release:	0.%{_beta}.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}-%{_beta}.tar.bz2
-# Source0-md5:	b3f37af3f2700a609c56eb0472c8d28b
+# Source0-md5:	1dca2a9e67e23360e379deda26f6148e
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
