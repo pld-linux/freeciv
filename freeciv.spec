@@ -1,6 +1,7 @@
 #
+# TODO: try to create bconds for supported clients
+#
 # Conditional build:
-%bcond_without	gtk		# do not build gtk client
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
 #
@@ -26,7 +27,7 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
-%{?with_gtk:BuildRequires:	gtk+2-devel}
+BuildRequires:	gtk+2-devel
 BuildRequires:	libggz-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
@@ -96,7 +97,7 @@ Ten pakiet zawiera server gry Freeciv.
 %configure \
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
 	--disable-silent-rules \
-	%{?with_gtk:--enable-client=gtk} \
+	--enable-client=all \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
 
@@ -121,7 +122,7 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 %{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
-%{?with_gtk:cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}}
+cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %if %{with ggz_server}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/{games,rooms}
@@ -176,7 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
 #%%{_datadir}/%{name}/freeland
-%{?with_gtk:%{_datadir}/%{name}/gtk_menus.xml}
+%{_datadir}/%{name}/gtk_menus.xml
 %{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
