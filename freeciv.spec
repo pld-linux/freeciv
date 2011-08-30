@@ -1,5 +1,6 @@
 #
-# TODO: try to create bconds for supported clients
+# TODO: - try to create bconds for supported clients
+#	- separate desktop files for all clients
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
@@ -168,6 +169,9 @@ rm -rf $RPM_BUILD_ROOT
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-gtk2
+%attr(755,root,root) %{_bindir}/freeciv-sdl
+%attr(755,root,root) %{_bindir}/freeciv-stub
+%attr(755,root,root) %{_bindir}/freeciv-xaw
 %attr(755,root,root) %{_bindir}/freeciv-manual
 %attr(755,root,root) %{_bindir}/freeciv-modpack
 %{_desktopdir}/%{name}-client.desktop
