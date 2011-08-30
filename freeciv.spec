@@ -95,6 +95,7 @@ Ten pakiet zawiera server gry Freeciv.
 %{__automake}
 %configure \
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
+	--disable-silent-rules \
 	%{?with_gtk:--enable-client=gtk} \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
