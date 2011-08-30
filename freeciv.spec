@@ -9,12 +9,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.2.7
+Version:	2.3.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	db61c36222ad0bd1de233cf29226ff27
+# Source0-md5:	70fd4285f2da7d41bdadac43458e62c9
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
@@ -146,6 +146,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
 %{_datadir}/%{name}/default
+%{_datadir}/%{name}/experimental
+%{_datadir}/%{name}/multiplayer
 %{_datadir}/%{name}/nation
 %{_datadir}/%{name}/scenario
 %{_datadir}/%{name}/*.serv
@@ -164,10 +166,11 @@ rm -rf $RPM_BUILD_ROOT
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-gtk2
-%attr(755,root,root) %{_bindir}/civmanual
+%attr(755,root,root) %{_bindir}/freeciv-manual
+%attr(755,root,root) %{_bindir}/freeciv-modpack
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/%{name}/*.*spec
-%{_datadir}/%{name}/amplio
+%{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
