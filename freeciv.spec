@@ -11,12 +11,12 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.3.0
+Version:	2.3.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	70fd4285f2da7d41bdadac43458e62c9
+# Source0-md5:	efce9b2cd8b7a36017f1ebce59236dcb
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
@@ -34,6 +34,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
+BuildRequires:	xorg-lib-libXaw-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
