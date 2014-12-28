@@ -27,7 +27,7 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 BuildRequires:	gtk+2-devel
 BuildRequires:	libggz-devel
