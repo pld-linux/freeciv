@@ -148,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-server
 %{_desktopdir}/%{name}-server.desktop
+%{_datadir}/appdata/freeciv-server.appdata.xml
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
 %{_datadir}/%{name}/default
@@ -178,6 +179,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/freeciv-manual
 %attr(755,root,root) %{_bindir}/freeciv-modpack
 %{_desktopdir}/%{name}-client.desktop
+%{_desktopdir}/%{name}-gtk3.desktop
+%{_desktopdir}/%{name}-modpack.desktop
+%{_desktopdir}/%{name}-sdl.desktop
+%{_datadir}/appdata/freeciv-gtk2.appdata.xml
+%{_datadir}/appdata/freeciv-gtk3.appdata.xml
+%{_datadir}/appdata/freeciv-modpack.appdata.xml
+%{_datadir}/appdata/freeciv-sdl.appdata.xml
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
