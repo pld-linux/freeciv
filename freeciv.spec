@@ -193,10 +193,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
 %{_mandir}/man6/freeciv-client.6*
-%{_mandir}/man6/freeciv-ftwl.6*
 %{_mandir}/man6/freeciv-gtk2.6*
 %{_mandir}/man6/freeciv-sdl.6*
-%{_mandir}/man6/freeciv-win32.6*
 %{_mandir}/man6/freeciv-xaw.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
 %{_pixmapsdir}/freeciv-client.png
