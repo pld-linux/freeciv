@@ -154,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/experimental
 %{_datadir}/%{name}/multiplayer
 %{_datadir}/%{name}/nation
-%{_datadir}/%{name}/scenario
+%{_datadir}/%{name}/scenarios
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/freeciv-server.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-server.png
