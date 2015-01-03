@@ -171,6 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-gtk2
+%attr(755,root,root) %{_bindir}/freeciv-gtk3
 %attr(755,root,root) %{_bindir}/freeciv-sdl
 %attr(755,root,root) %{_bindir}/freeciv-stub
 %attr(755,root,root) %{_bindir}/freeciv-xaw
