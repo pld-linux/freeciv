@@ -100,7 +100,7 @@ Ten pakiet zawiera server gry Freeciv.
 %configure \
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
 	--disable-silent-rules \
-	--enable-client=all \
+	--enable-client=gtk2,gtk3,sdl,xaw,stub \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
 
