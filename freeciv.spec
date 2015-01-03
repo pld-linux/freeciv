@@ -203,6 +203,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/wonders
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
+%{_mandir}/man6/freeciv-gtk3.6*
+%{_mandir}/man6/freeciv-manual.6*
+%{_mandir}/man6/freeciv-modpack.6*
 %{_mandir}/man6/freeciv-sdl.6*
 %{_mandir}/man6/freeciv-xaw.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
