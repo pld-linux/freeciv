@@ -189,6 +189,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
+%{_datadir}/%{name}/cimpletoon
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
 #%%{_datadir}/%{name}/freeland
@@ -209,4 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man6/freeciv-sdl.6*
 %{_mandir}/man6/freeciv-xaw.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
+%{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
 %{_pixmapsdir}/freeciv-client.png
+%{_pixmapsdir}/freeciv-modpack.png
+
