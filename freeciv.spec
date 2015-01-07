@@ -26,8 +26,8 @@ Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
 URL:		http://freeciv.wikia.com/
-BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	curl-devel
@@ -127,7 +127,7 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 #cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
 #cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/no
 %{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
 cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -138,7 +138,7 @@ cp -a data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
 cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
 %endif
 
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/%{name}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libfreeciv{,-srv}.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-qt*
 
