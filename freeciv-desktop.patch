@@ -1,6 +1,6 @@
 --- freeciv-2.1.1/bootstrap/freeciv.desktop.in~	2007-11-30 21:03:59.000000000 +0100
 +++ freeciv-2.1.1/bootstrap/freeciv.desktop.in	2007-11-30 21:03:21.000000000 +0100
-@@ -4,7 +4,8 @@
+@@ -4,5 +4,6 @@
  Name[ca]=Freeciv
  Name[es]=Freeciv
  Name[fr]=Freeciv
@@ -8,9 +8,7 @@
 +Name[nb]=Freeciv
 +Name[pl]=Freeciv
  Name[pt]=Freeciv
- Name[tr]=Freeciv
- Comment=Turn-based strategy game inspired by the history of human civilization
-@@ -12,7 +13,8 @@
+@@ -12,6 +13,7 @@
  Comment[da]=Strategispil inspireret af den menneskelige civilisations historie
  Comment[de]=Rundenbasiertes Strategiespiel, inspiriert durch die Geschichte der menschlichen Zivilisation
  Comment[fi]=Ihmiskunnan historian inspiroima vuoropohjainen strategiapeli
@@ -19,11 +17,10 @@
 +Comment[pl]=Turowa gra strategiczna zainspirowana historią ludzkiej cywilizacji
  Comment[pt]=Jogo de estratégia por turnos inspirado na História da civilização humana
  Comment[sv]=Turordningsbaserat strategispel inspirerat av den mänskliga
- Comment[tr]=İnsanlık tarihinden esinlenerek yapılmış sıra tabanlı strateji oyunu
 @@ -22,3 +22,4 @@
- Terminal=false
  Type=Application
  Categories=GTK;Game;StrategyGame;
+ Keywords=strategy;simulation;civilization;tiles;history;mankind;multiplayer;
 +# vi: encoding=utf-8
 --- freeciv-2.2.0-beta1/bootstrap/freeciv-server.desktop.in~	2009-12-13 10:57:16.000000000 +0000
 +++ freeciv-2.2.0-beta1/bootstrap/freeciv-server.desktop.in	2009-12-24 10:33:18.558453813 +0000
@@ -46,10 +43,11 @@
  Comment[pt]=Jogo de estratégia por turnos inspirado na História da civilização humana
  Comment[sv]=Turordningsbaserat strategispel inspirerat av den mänskliga
  Exec=civserver
-@@ -18,4 +20,5 @@
+@@ -18,5 +20,6 @@
  StartupNotify=true
  Terminal=true
  Type=Application
 -Categories=ConsoleOnly;Game;StrategyGame;
 +Categories=GTK;Game;StrategyGame;
+ Keywords=strategy;simulation;civilization;tiles;history;mankind;multiplayer;
 +# vi: encoding=utf-8
