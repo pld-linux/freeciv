@@ -10,6 +10,7 @@
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
 %bcond_without  magickwand	# build without MagickWand map image toolkit support
+%bcond_without  system_lua	# build with system lua
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
@@ -41,6 +42,7 @@ BuildRequires:	gtk+3-devel
 BuildRequires:	libggz-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
+%{?with_system_lua:BuildRequires:	lua51-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	xorg-lib-libXaw-devel
@@ -110,6 +112,7 @@ Ten pakiet zawiera server gry Freeciv.
 	--disable-silent-rules \
 	--enable-client=gtk2,gtk3,sdl,xaw,stub \
 	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
+	%{?with_system_lua:--enable-sys-lua} \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
 
