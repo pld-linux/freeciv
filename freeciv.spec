@@ -133,6 +133,9 @@ cp -a data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
 cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
 %endif
 
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/%{name}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libfreeciv{,-srv}.{a,la}
+
 %find_lang %{name}
 
 %clean
