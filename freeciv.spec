@@ -1,6 +1,9 @@
 #
 # TODO: - try to create bconds for supported clients
 #	- separate desktop files for all clients
+#	- gtk3 client is broken:
+#		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
+#	- work on authentication and Freeciv database support (fcdb)
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
