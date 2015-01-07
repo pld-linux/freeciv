@@ -10,7 +10,7 @@
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
 %bcond_without  magickwand	# build without MagickWand map image toolkit support
-%bcond_without  system_lua	# build with system lua
+%bcond_without  system_lua	# build with bundled lua
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
