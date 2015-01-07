@@ -1,6 +1,5 @@
 #
-# TODO: - try to create bconds for supported clients
-#	- separate desktop files for all clients
+# TODO:
 #	- gtk3 client is broken:
 #		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #	- work on authentication and Freeciv database support (fcdb)
@@ -23,7 +22,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.4.4
-Release:	0.2
+Release:	0.3
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -77,18 +76,98 @@ O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
 %package client
-Summary:	Freeciv game client
-Summary(pl.UTF-8):	Klient gry Freeciv
+Summary:	GTK2 Freeciv game client
+Summary(pl.UTF-8):	Klient gry Freeciv korzystający z GTK2
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
-Requires:	SDL_mixer
+Requires:	%{name}-client-common = %{version}-%{release}
 Suggests:	%{name}-server = %{version}-%{release}
 
 %description client
-This package contains Freeciv game client.
+This package contains GTK2-based Freeciv game client.
 
 %description client -l pl.UTF-8
-Ten pakiet zawiera klienta gry Freeciv.
+Ten pakiet zawiera klienta gry Freeciv korzystającego z GTK2.
+
+%package client-common
+Summary:	Freeciv game client common files
+Summary(pl.UTF-8):	Wspólne pliki klientów gry Freeciv
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-client-common = %{version}-%{release}
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client-common
+This package contains common files for Freeciv game clients.
+
+%description client-common -l pl.UTF-8
+Ten pakiet zawiera wspólne pliki dla klientów gry Freeciv.
+
+%package client-gtk3
+Summary:	GTK3 Freeciv game client
+Summary(pl.UTF-8):	Klient gry Freeciv korzystający z GTK3
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client-gtk3
+This package contains GTK3-based Freeciv game client.
+
+%description client-gtk3 -l pl.UTF-8
+Ten pakiet zawiera klienta gry Freeciv korzystającego z GTK3.
+
+%package client-sdl
+Summary:	SDL Freeciv game client
+Summary(pl.UTF-8):	Klient gry Freeciv korzystający z SDL
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-client-common = %{version}-%{release}
+Requires:	SDL_mixer
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client-sdl
+This package contains SDL-based Freeciv game client.
+
+%description client-sdl -l pl.UTF-8
+Ten pakiet zawiera klienta gry Freeciv korzystającego z SDL.
+
+%package client-xaw
+Summary:	XAW Freeciv game client
+Summary(pl.UTF-8):	Klient gry Freeciv korzystający z XAW
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-client-common = %{version}-%{release}
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client-xaw
+This package contains based Freeciv game client using XAW (X Athena
+Widgets).
+
+%description client-xaw -l pl.UTF-8
+Ten pakiet zawiera klienta gry Freeciv korzystającego z biblioteki XAW
+(X Athena Widgets)
+
+%package client-modpack
+Summary:	Custom content installer for the Freeciv game
+Summary(pl.UTF-8):	Instalator dodatków do gry Freeciv
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-client-common = %{version}-%{release}
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client-modpack
+Custom content installer for the Freeciv game.
+
+This program allows users to select and download add-on content
+("modpacks") for Freeciv from the Internet, either from a list
+maintained by the Freeciv team, or by using a URL obtained by other
+means. It takes care of installing the files in the correct place
+under the user's home directory for this version of Freeciv; it does
+not install anything for system-wide use.
+
+%description client-modpack -l pl.UTF-8
+Ten pakiet zawiera instalator dodatków do gry Freeciv dostępnych w
+internecie.
 
 %package server
 Summary:	Freeciv game server
@@ -197,31 +276,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/ggzd/rooms/civserver.room
 %endif
 
-%files client
+%files client-common
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/freeciv-gtk2
-%attr(755,root,root) %{_bindir}/freeciv-gtk3
-%attr(755,root,root) %{_bindir}/freeciv-sdl
 %attr(755,root,root) %{_bindir}/freeciv-stub
-%attr(755,root,root) %{_bindir}/freeciv-xaw
 %attr(755,root,root) %{_bindir}/freeciv-manual
-%attr(755,root,root) %{_bindir}/freeciv-modpack
-%{_desktopdir}/%{name}-client.desktop
-%{_desktopdir}/%{name}-gtk3.desktop
-%{_desktopdir}/%{name}-modpack.desktop
-%{_desktopdir}/%{name}-sdl.desktop
-%{_datadir}/appdata/freeciv-gtk2.appdata.xml
-%{_datadir}/appdata/freeciv-gtk3.appdata.xml
-%{_datadir}/appdata/freeciv-modpack.appdata.xml
-%{_datadir}/appdata/freeciv-sdl.appdata.xml
-%{_datadir}/%{name}/Freeciv
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
 %{_datadir}/%{name}/cimpletoon
 %{_datadir}/%{name}/flags
 %{_datadir}/%{name}/freeciv.rc*
-#%%{_datadir}/%{name}/freeland
 %{_datadir}/%{name}/gtk_menus.xml
 %{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
@@ -231,15 +295,52 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
+%{_mandir}/man6/freeciv-manual.6*
+
+%files client-modpack
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-modpack
+%{_desktopdir}/%{name}-modpack.desktop
+%{_datadir}/appdata/freeciv-modpack.appdata.xml
+%{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
+%{_pixmapsdir}/freeciv-modpack.png
+%{_mandir}/man6/freeciv-modpack.6*
+
+%if %{with gtk2}
+%files client
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-gtk2
+%{_desktopdir}/%{name}-client.desktop
+%{_datadir}/appdata/freeciv-gtk2.appdata.xml
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
-%{_mandir}/man6/freeciv-gtk3.6*
-%{_mandir}/man6/freeciv-manual.6*
-%{_mandir}/man6/freeciv-modpack.6*
-%{_mandir}/man6/freeciv-sdl.6*
-%{_mandir}/man6/freeciv-xaw.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
-%{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
 %{_pixmapsdir}/freeciv-client.png
-%{_pixmapsdir}/freeciv-modpack.png
+%endif
+
+%if %{with gtk3}
+%files client-gtk3
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-gtk3
+%{_desktopdir}/%{name}-gtk3.desktop
+%{_datadir}/appdata/freeciv-gtk3.appdata.xml
+%{_mandir}/man6/freeciv-gtk3.6*
+%endif
+
+%if %{with sdl}
+%files client-sdl
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-sdl
+%{_desktopdir}/%{name}-sdl.desktop
+%{_datadir}/appdata/freeciv-sdl.appdata.xml
+%{_mandir}/man6/freeciv-sdl.6*
+%endif
+
+%if %{with xaw}
+%files client-xaw
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-xaw
+%{_datadir}/%{name}/Freeciv
+%{_mandir}/man6/freeciv-xaw.6*
+%endif
 
