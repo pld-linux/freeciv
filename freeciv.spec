@@ -9,6 +9,7 @@
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
 %bcond_without  ggz_server	# build without ggz server
+%bcond_without  magickwand	# build without MagickWand map image toolkit support
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
@@ -27,6 +28,7 @@ Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
 URL:		http://freeciv.wikia.com/
+%{?with_magickwand:BuildRequires:	ImageMagick-devel}
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf >= 2.52
@@ -107,6 +109,7 @@ Ten pakiet zawiera server gry Freeciv.
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
 	--disable-silent-rules \
 	--enable-client=gtk2,gtk3,sdl,xaw,stub \
+	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
 
