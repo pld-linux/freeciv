@@ -11,6 +11,11 @@
 %bcond_without  ggz_server	# build without ggz server
 %bcond_without  magickwand	# build without MagickWand map image toolkit support
 %bcond_without  system_lua	# build with bundled lua
+%bcond_without	gtk2		# build without gtk2 client
+%bcond_without	gtk3		# build without gtk3 client
+%bcond_without	sdl		# build without sdl client
+%bcond_without	xaw		# build without xaw client
+%bcond_with	qt		# build with qt client (broken)
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
@@ -30,22 +35,24 @@ Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
 URL:		http://freeciv.wikia.com/
 %{?with_magickwand:BuildRequires:	ImageMagick-devel}
+%if %{with sdl}
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
+%endif
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	curl-devel
 BuildRequires:	gettext-tools
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
-BuildRequires:	gtk+2-devel
-BuildRequires:	gtk+3-devel
+%{?with_gtk2:BuildRequires:	gtk+2-devel}
+%{?with_gtk3:BuildRequires:	gtk+3-devel}
 BuildRequires:	libggz-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 %{?with_system_lua:BuildRequires:	lua51-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
-BuildRequires:	xorg-lib-libXaw-devel
+%{?with_xaw:BuildRequires:	xorg-lib-libXaw-devel}
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -110,7 +117,7 @@ Ten pakiet zawiera server gry Freeciv.
 %configure \
 	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
 	--disable-silent-rules \
-	--enable-client=gtk2,gtk3,sdl,xaw,stub \
+	--enable-client=stub,%{?with_gtk2:gtk2},%{?with_gtk3:gtk3},%{?with_qt:qt},%{?with_sdl:sdl},%{?with_xaw:xaw} \
 	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
 	%{?with_system_lua:--enable-sys-lua} \
 	%{!?with_ggz_client:--without-ggz-client} \
