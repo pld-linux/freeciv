@@ -215,7 +215,7 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 cp -a client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
 cp -a server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
-%{__rm} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+%{__rm} -f $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 cp -a data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -223,7 +223,7 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 #cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/no
-%{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
+%{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
 
 cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}
 
@@ -287,7 +287,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/buildings
 %{_datadir}/%{name}/cimpletoon
 %{_datadir}/%{name}/flags
-%{_datadir}/%{name}/freeciv.rc*
 %{_datadir}/%{name}/gtk_menus.xml
 %{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
@@ -314,6 +313,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/freeciv-gtk2
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/appdata/freeciv-gtk2.appdata.xml
+%{_datadir}/%{name}/freeciv.rc-2.0
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
