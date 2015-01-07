@@ -5,6 +5,7 @@
 #	- work on authentication and Freeciv database support (fcdb)
 #	- patch all packaged desktop files
 #	- get rid freeciv-manual (or not)
+#	- get rid freeciv-stub (or not)
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
