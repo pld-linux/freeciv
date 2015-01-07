@@ -29,7 +29,7 @@ URL:		http://freeciv.wikia.com/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-tools
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 BuildRequires:	gtk+2-devel
