@@ -195,6 +195,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/appdata/freeciv-gtk3.appdata.xml
 %{_datadir}/appdata/freeciv-modpack.appdata.xml
 %{_datadir}/appdata/freeciv-sdl.appdata.xml
+%{_datadir}/%{name}/Freeciv
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
