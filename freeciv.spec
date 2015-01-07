@@ -4,6 +4,7 @@
 #		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #	- work on authentication and Freeciv database support (fcdb)
 #	- patch all packaged desktop files
+#	- get rid freeciv-manual (or not)
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
