@@ -34,6 +34,7 @@ BuildRequires:	curl-devel
 BuildRequires:	gettext-tools
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+3-devel
 BuildRequires:	libggz-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
