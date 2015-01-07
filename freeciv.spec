@@ -135,6 +135,7 @@ cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.roo
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/%{name}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libfreeciv{,-srv}.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-qt*
 
 %find_lang %{name}
 
