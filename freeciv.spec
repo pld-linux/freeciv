@@ -12,7 +12,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.4.4
-Release:	0.1
+Release:	0.2
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -140,7 +140,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS README ChangeLog NEWS
+%doc AUTHORS doc/BUGS ChangeLog doc/FAQ doc/HOWTOPLAY
+%doc NEWS NEWS-2.4
+%doc doc/README.SDLClient doc/README.cma doc/README.effects doc/README.fcdb
+%doc doc/README.graphics doc/README.sound
+%doc doc/README.ruleset_experimental doc/README.ruleset_multiplayer doc/README.rulesets
+%doc doc/TODO
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
 
