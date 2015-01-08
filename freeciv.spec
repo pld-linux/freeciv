@@ -4,6 +4,7 @@
 #		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #	- work on authentication and Freeciv database support (fcdb)
 #	- patch all packaged desktop files
+#	- modpack requires gtk2 or gtk3
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
@@ -15,6 +16,7 @@
 %bcond_without	sdl		# build without sdl client
 %bcond_without	xaw		# build without xaw client
 %bcond_with	qt		# build with qt client (broken)
+%bcond_without	modpack		# build without modpack installer
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
@@ -198,6 +200,7 @@ Ten pakiet zawiera server gry Freeciv.
 	--disable-silent-rules \
 	--enable-client=stub,%{?with_gtk2:gtk2},%{?with_gtk3:gtk3},%{?with_qt:qt},%{?with_sdl:sdl},%{?with_xaw:xaw} \
 	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
+	%{!?with_modpack:--enable-fcmp=no} \
 	%{?with_system_lua:--enable-sys-lua} \
 	%{!?with_ggz_client:--without-ggz-client} \
 	%{!?with_ggz_server:--without-ggz-server}
@@ -307,6 +310,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
 
+%if %{with modpack}
 %files client-modpack
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-modpack
@@ -315,6 +319,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
 %{_pixmapsdir}/freeciv-modpack.png
 %{_mandir}/man6/freeciv-modpack.6*
+%endif
 
 %if %{with gtk2}
 %files client
