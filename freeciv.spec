@@ -244,6 +244,9 @@ cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.roo
 
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-stub
 
+# needed if building --without gtk2,gtk3,sdl
+%{__install} -d $RPM_BUILD_ROOT%{_datadir}/%{name}/themes
+
 %find_lang %{name}
 
 %clean
@@ -300,7 +303,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
 %{_datadir}/%{name}/stdsounds
-%{_datadir}/%{name}/themes
+%dir %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
 
@@ -320,6 +323,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/%{name}-client.desktop
 %{_datadir}/appdata/freeciv-gtk2.appdata.xml
 %{_datadir}/%{name}/freeciv.rc-2.0
+%{_datadir}/%{name}/themes/gui-gtk-2.0
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
@@ -332,6 +336,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/freeciv-gtk3
 %{_desktopdir}/%{name}-gtk3.desktop
 %{_datadir}/appdata/freeciv-gtk3.appdata.xml
+%{_datadir}/%{name}/themes/gui-gtk-3.0
 %{_mandir}/man6/freeciv-gtk3.6*
 %endif
 
@@ -341,6 +346,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/freeciv-sdl
 %{_desktopdir}/%{name}-sdl.desktop
 %{_datadir}/appdata/freeciv-sdl.appdata.xml
+%{_datadir}/%{name}/themes/gui-sdl
 %{_mandir}/man6/freeciv-sdl.6*
 %endif
 
