@@ -4,7 +4,6 @@
 #		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #	- work on authentication and Freeciv database support (fcdb)
 #	- patch all packaged desktop files
-#	- get rid freeciv-manual (or not)
 #	- get rid freeciv-stub (or not)
 #
 # Conditional build:
@@ -237,6 +236,13 @@ cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.roo
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libfreeciv{,-srv}.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-qt*
 
+# from freeciv-manual man:
+#      This tool is currently only really of use to the Freeciv maintainers, 
+#      as a starting point for  pages  on  the  main Freeciv wiki; 
+#      it's not very useful to end users.
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-manual
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-manual*
+
 %find_lang %{name}
 
 %clean
@@ -256,6 +262,7 @@ rm -rf $RPM_BUILD_ROOT
 %files server
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-server
+#attr(755,root,root) %{_bindir}/freeciv-manual
 %{_desktopdir}/%{name}-server.desktop
 %{_datadir}/appdata/freeciv-server.appdata.xml
 %{_datadir}/%{name}/civ1
@@ -267,6 +274,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/scenarios
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/freeciv-server.6*
+#{_mandir}/man6/freeciv-manual.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-server.png
 %{_pixmapsdir}/freeciv-server.png
 
@@ -281,7 +289,6 @@ rm -rf $RPM_BUILD_ROOT
 %files client-common
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-stub
-%attr(755,root,root) %{_bindir}/freeciv-manual
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
@@ -296,7 +303,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
-%{_mandir}/man6/freeciv-manual.6*
 
 %files client-modpack
 %defattr(644,root,root,755)
