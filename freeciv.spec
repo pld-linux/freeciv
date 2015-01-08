@@ -149,7 +149,7 @@ Widgets).
 Ten pakiet zawiera klienta gry Freeciv korzystającego z biblioteki XAW
 (X Athena Widgets)
 
-%package client-modpack
+%package modpack
 Summary:	Custom content installer for the Freeciv game
 Summary(pl.UTF-8):	Instalator dodatków do gry Freeciv
 Group:		X11/Applications/Games/Strategy
@@ -157,7 +157,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-client-common = %{version}-%{release}
 Suggests:	%{name}-server = %{version}-%{release}
 
-%description client-modpack
+%description modpack
 Custom content installer for the Freeciv game.
 
 This program allows users to select and download add-on content
@@ -167,7 +167,7 @@ means. It takes care of installing the files in the correct place
 under the user's home directory for this version of Freeciv; it does
 not install anything for system-wide use.
 
-%description client-modpack -l pl.UTF-8
+%description modpack -l pl.UTF-8
 Ten pakiet zawiera instalator dodatków do gry Freeciv dostępnych w
 internecie.
 
@@ -311,7 +311,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/wonders
 
 %if %{with modpack}
-%files client-modpack
+%files modpack
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-modpack
 %{_desktopdir}/%{name}-modpack.desktop
