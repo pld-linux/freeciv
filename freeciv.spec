@@ -4,7 +4,6 @@
 #		GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #	- work on authentication and Freeciv database support (fcdb)
 #	- patch all packaged desktop files
-#	- get rid freeciv-stub (or not)
 #
 # Conditional build:
 %bcond_without  ggz_client	# build without ggz client
@@ -243,6 +242,8 @@ cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.roo
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-manual
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-manual*
 
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-stub
+
 %find_lang %{name}
 
 %clean
@@ -288,7 +289,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files client-common
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/freeciv-stub
 %{_datadir}/%{name}/*.*spec
 %{_datadir}/%{name}/amplio2
 %{_datadir}/%{name}/buildings
