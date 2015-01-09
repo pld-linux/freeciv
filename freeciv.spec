@@ -34,10 +34,8 @@ Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-ggz.patch
 URL:		http://freeciv.wikia.com/
 %{?with_magickwand:BuildRequires:	ImageMagick-devel}
-%if %{with sdl}
-BuildRequires:	SDL_image-devel
+%{?with_sdl:BuildRequires:	SDL_image-devel}
 BuildRequires:	SDL_mixer-devel
-%endif
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	curl-devel
