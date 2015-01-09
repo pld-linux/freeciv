@@ -92,7 +92,7 @@ Summary:	Freeciv game client common files
 Summary(pl.UTF-8):	Wspólne pliki klientów gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-client-common = %{version}-%{release}
+Requires:	SDL_mixer
 Suggests:	%{name}-server = %{version}-%{release}
 
 %description client-common
@@ -120,7 +120,6 @@ Summary(pl.UTF-8):	Klient gry Freeciv korzystający z SDL
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-client-common = %{version}-%{release}
-Requires:	SDL_mixer
 Suggests:	%{name}-server = %{version}-%{release}
 
 %description client-sdl
