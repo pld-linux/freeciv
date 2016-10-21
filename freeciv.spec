@@ -22,7 +22,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.4.4
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -41,6 +41,7 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	curl-devel
 BuildRequires:	gettext-tools
 %{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
+BuildRequires:	glib2-devel
 %{?with_gtk2:BuildRequires:	gtk+2-devel}
 %{?with_gtk3:BuildRequires:	gtk+3-devel}
 BuildRequires:	libggz-devel
@@ -183,6 +184,8 @@ Ten pakiet zawiera server gry Freeciv.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+
+cp -f /usr/share/aclocal/glib-gettext.m4 m4/
 
 %build
 %{__libtoolize}
