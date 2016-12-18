@@ -1,0 +1,22 @@
+--- freeciv-2.4.4/m4/magickwand.m4~	2014-12-06 14:25:14.000000000 +0100
++++ freeciv-2.4.4/m4/magickwand.m4	2016-12-18 16:51:51.153456940 +0100
+@@ -68,7 +68,7 @@
+     LIBS="$WAND_LIBS $LIBS"
+ 
+     AC_MSG_CHECKING([for all development tools needed for MagickWand])
+-    AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <wand/magick_wand.h>]],
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <MagickWand/MagickWand.h>]],
+ [MagickWand *mw = NewMagickWand();])], [AC_MSG_RESULT([yes])],
+ [AC_MSG_RESULT([no])
+ wand=no
+--- freeciv-2.4.4/common/mapimg.c~	2014-12-06 14:25:02.000000000 +0100
++++ freeciv-2.4.4/common/mapimg.c	2016-12-18 16:53:14.744430711 +0100
+@@ -18,7 +18,7 @@
+ #include <stdarg.h>
+ 
+ #ifdef HAVE_MAPIMG_MAGICKWAND
+-  #include <wand/MagickWand.h>
++  #include <MagickWand/MagickWand.h>
+ #endif /* HAVE_MAPIMG_MAGICKWAND */
+ 
+ /* utility */
