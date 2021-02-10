@@ -5,8 +5,6 @@
 #	- modpack requires gtk2 or gtk3
 #
 # Conditional build:
-%bcond_without  ggz_client	# build without ggz client
-%bcond_without  ggz_server	# build without ggz server
 %bcond_without  magickwand	# build without MagickWand map image toolkit support
 %bcond_without  system_lua	# build with bundled lua
 %bcond_without	gtk2		# build without gtk2 client
@@ -21,17 +19,16 @@ Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.4.4
-Release:	13
+Version:	2.6.3
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	038c53184497fcf31bcd268418dbe4f6
+# Source0-md5:	68f3eab21a20fcf7fe7de39d0915e23f
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-ggz.patch
 Patch3:		imagemagick7.patch
 URL:		http://freeciv.wikia.com/
 %{?with_magickwand:BuildRequires:	ImageMagick-devel}
@@ -41,11 +38,9 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	curl-devel
 BuildRequires:	gettext-tools
-%{?with_ggz_client:BuildRequires:	ggz-gtk-client-devel}
 BuildRequires:	glib2-devel
 %{?with_gtk2:BuildRequires:	gtk+2-devel}
 %{?with_gtk3:BuildRequires:	gtk+3-devel}
-BuildRequires:	libggz-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 %{?with_system_lua:BuildRequires:	lua51-devel}
@@ -183,8 +178,7 @@ Ten pakiet zawiera server gry Freeciv.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+#%patch1 -p1
 %patch3 -p1
 
 cp -f /usr/share/aclocal/glib-gettext.m4 m4/
@@ -196,14 +190,12 @@ cp -f /usr/share/aclocal/glib-gettext.m4 m4/
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-ggzd-confdir=%{_sysconfdir}/ggzd \
 	--disable-silent-rules \
 	--enable-client=stub,%{?with_gtk2:gtk2},%{?with_gtk3:gtk3},%{?with_qt:qt},%{?with_sdl:sdl},%{?with_xaw:xaw} \
 	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
+	%{?with_sdl:--enable-sdl-mixer=sdl} \
 	%{!?with_modpack:--enable-fcmp=no} \
-	%{?with_system_lua:--enable-sys-lua} \
-	%{!?with_ggz_client:--without-ggz-client} \
-	%{!?with_ggz_server:--without-ggz-server}
+	%{?with_system_lua:--enable-sys-lua}
 
 %{__make}
 
@@ -214,25 +206,12 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -a client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
-cp -a server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
-%{__rm} -f $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+#cp -a client/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}/%{name}-client.desktop
+#cp -a server/%{name}-server.desktop $RPM_BUILD_ROOT%{_desktopdir}
+#%{__rm} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 cp -a data/icons/32x32/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
-#cp -a freeland.tilespec $RPM_BUILD_ROOT%{_datadir}/%{name}
-#cp -a freeland $RPM_BUILD_ROOT%{_datadir}/%{name}
-
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/no
-%{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/ggz.modules
-
-cp -a data/gtk_menus.xml $RPM_BUILD_ROOT%{_datadir}/%{name}
-
-%if %{with ggz_server}
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/{games,rooms}
-cp -a data/civserver.dsc $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/games/civserver.dsc
-cp -a data/civserver.room $RPM_BUILD_ROOT%{_sysconfdir}/ggzd/rooms/civserver.room
-%endif
 
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libfreeciv{,-srv}.{a,la}
@@ -257,12 +236,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS doc/BUGS ChangeLog doc/FAQ doc/HOWTOPLAY
-%doc NEWS NEWS-2.4
-%doc doc/README.SDLClient doc/README.cma doc/README.effects doc/README.fcdb
-%doc doc/README.graphics doc/README.sound
-%doc doc/README.ruleset_experimental doc/README.ruleset_multiplayer doc/README.rulesets
-%doc doc/TODO
+%doc AUTHORS doc/BUGS ChangeLog doc/FAQ doc/HOWTOPLAY NEWS NEWS-2.6
+%doc doc/README.effects doc/README.fcdb doc/README.graphics doc/README.sound
+%doc doc/README.rulesets doc/TODO
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
 
@@ -270,7 +246,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-server
 #attr(755,root,root) %{_bindir}/freeciv-manual
-%{_desktopdir}/%{name}-server.desktop
+%{_desktopdir}/org.freeciv.server.desktop
 %{_datadir}/appdata/freeciv-server.appdata.xml
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
@@ -285,14 +261,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/freeciv-server.png
 %{_pixmapsdir}/freeciv-server.png
 
-%if %{with ggz_server}
-%dir %{_sysconfdir}/ggzd
-%dir %{_sysconfdir}/ggzd/games
-%dir %{_sysconfdir}/ggzd/rooms
-%{_sysconfdir}/ggzd/games/civserver.dsc
-%{_sysconfdir}/ggzd/rooms/civserver.room
-%endif
-
 %files client-common
 %defattr(644,root,root,755)
 %{_datadir}/%{name}/*.*spec
@@ -300,7 +268,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/buildings
 %{_datadir}/%{name}/cimpletoon
 %{_datadir}/%{name}/flags
-%{_datadir}/%{name}/gtk_menus.xml
 %{_datadir}/%{name}/hex2t
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
@@ -313,9 +280,9 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with modpack}
 %files modpack
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/freeciv-modpack
-%{_desktopdir}/%{name}-modpack.desktop
-%{_datadir}/appdata/freeciv-modpack.appdata.xml
+%attr(755,root,root) %{_bindir}/freeciv-mp-gtk3
+%{_desktopdir}/org.freeciv.mp.gtk3.desktop
+%{_datadir}/appdata/freeciv-mp-gtk3.appdata.xml
 %{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
 %{_pixmapsdir}/freeciv-modpack.png
 %{_mandir}/man6/freeciv-modpack.6*
@@ -325,7 +292,7 @@ rm -rf $RPM_BUILD_ROOT
 %files client
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-gtk2
-%{_desktopdir}/%{name}-client.desktop
+%{_desktopdir}/org.freeciv.gtk2.desktop
 %{_datadir}/appdata/freeciv-gtk2.appdata.xml
 %{_datadir}/%{name}/freeciv.rc-2.0
 %{_datadir}/%{name}/themes/gui-gtk-2.0
@@ -339,7 +306,7 @@ rm -rf $RPM_BUILD_ROOT
 %files client-gtk3
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-gtk3
-%{_desktopdir}/%{name}-gtk3.desktop
+%{_desktopdir}/org.freeciv.gtk3.desktop
 %{_datadir}/appdata/freeciv-gtk3.appdata.xml
 %{_datadir}/%{name}/themes/gui-gtk-3.0
 %{_mandir}/man6/freeciv-gtk3.6*
@@ -349,7 +316,7 @@ rm -rf $RPM_BUILD_ROOT
 %files client-sdl
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/freeciv-sdl
-%{_desktopdir}/%{name}-sdl.desktop
+%{_desktopdir}/org.freeciv.sdl.desktop
 %{_datadir}/appdata/freeciv-sdl.appdata.xml
 %{_datadir}/%{name}/themes/gui-sdl
 %{_mandir}/man6/freeciv-sdl.6*
