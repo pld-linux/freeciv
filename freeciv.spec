@@ -20,7 +20,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.6.3
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -43,7 +43,7 @@ BuildRequires:	glib2-devel
 %{?with_gtk3:BuildRequires:	gtk+3-devel}
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
-%{?with_system_lua:BuildRequires:	lua51-devel}
+%{?with_system_lua:BuildRequires:	lua53-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 %{?with_xaw:BuildRequires:	xorg-lib-libXaw-devel}
@@ -181,7 +181,7 @@ Ten pakiet zawiera server gry Freeciv.
 #%patch1 -p1
 %patch3 -p1
 
-cp -f /usr/share/aclocal/glib-gettext.m4 m4/
+cp -f %{_aclocaldir}/glib-gettext.m4 m4/
 
 %build
 %{__libtoolize}
@@ -218,8 +218,8 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-qt*
 
 # from freeciv-manual man:
-#      This tool is currently only really of use to the Freeciv maintainers, 
-#      as a starting point for  pages  on  the  main Freeciv wiki; 
+#      This tool is currently only really of use to the Freeciv maintainers,
+#      as a starting point for  pages  on  the  main Freeciv wiki;
 #      it's not very useful to end users.
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-manual
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-manual*
@@ -227,7 +227,7 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-stub
 
 # needed if building --without gtk2,gtk3,sdl
-%{__install} -d $RPM_BUILD_ROOT%{_datadir}/%{name}/themes
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/themes
 
 %find_lang %{name}
 
@@ -244,16 +244,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files server
 %defattr(644,root,root,755)
+%{_sysconfdir}/freeciv/database.lua
 %attr(755,root,root) %{_bindir}/freeciv-server
 #attr(755,root,root) %{_bindir}/freeciv-manual
 %{_desktopdir}/org.freeciv.server.desktop
 %{_datadir}/appdata/freeciv-server.appdata.xml
 %{_datadir}/%{name}/civ1
 %{_datadir}/%{name}/civ2
+%{_datadir}/%{name}/civ2civ3
+%{_datadir}/%{name}/classic
 %{_datadir}/%{name}/default
 %{_datadir}/%{name}/experimental
+%{_datadir}/%{name}/hexemplio
 %{_datadir}/%{name}/multiplayer
 %{_datadir}/%{name}/nation
+%{_datadir}/%{name}/override
+%{_datadir}/%{name}/sandbox
 %{_datadir}/%{name}/scenarios
 %{_datadir}/%{name}/*.serv
 %{_mandir}/man6/freeciv-server.6*
@@ -272,6 +278,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/isophex
 %{_datadir}/%{name}/isotrident
 %{_datadir}/%{name}/misc
+%{_datadir}/%{name}/stdmusic
 %{_datadir}/%{name}/stdsounds
 %dir %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
@@ -286,6 +293,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
 %{_pixmapsdir}/freeciv-modpack.png
 %{_mandir}/man6/freeciv-modpack.6*
+%{_mandir}/man6/freeciv-mp-gtk3.6*
 %endif
 
 %if %{with gtk2}
@@ -295,6 +303,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/org.freeciv.gtk2.desktop
 %{_datadir}/appdata/freeciv-gtk2.appdata.xml
 %{_datadir}/%{name}/freeciv.rc-2.0
+%{_datadir}/%{name}/gtk2_menus.xml
 %{_datadir}/%{name}/themes/gui-gtk-2.0
 %{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
@@ -308,6 +317,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/freeciv-gtk3
 %{_desktopdir}/org.freeciv.gtk3.desktop
 %{_datadir}/appdata/freeciv-gtk3.appdata.xml
+%{_datadir}/%{name}/gtk3_menus.xml
 %{_datadir}/%{name}/themes/gui-gtk-3.0
 %{_mandir}/man6/freeciv-gtk3.6*
 %endif
