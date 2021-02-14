@@ -20,7 +20,7 @@ Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
 Version:	2.6.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
@@ -244,7 +244,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files server
 %defattr(644,root,root,755)
-%{_sysconfdir}/freeciv/database.lua
+%{_sysconfdir}/freeciv
 %attr(755,root,root) %{_bindir}/freeciv-server
 #attr(755,root,root) %{_bindir}/freeciv-manual
 %{_desktopdir}/org.freeciv.server.desktop
