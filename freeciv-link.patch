@@ -1,15 +1,16 @@
---- freeciv-2.0.7/configure.ac.orig	2005-10-13 09:45:45.000000000 +0200
-+++ freeciv-2.0.7/configure.ac	2005-12-26 16:30:36.000000000 +0100
-@@ -440,7 +440,7 @@
- dnl Checks for additional server libraries:
- if test x$server = xtrue; then
+diff -urNp -x '*.orig' freeciv-2.6.3.org/configure.ac freeciv-2.6.3/configure.ac
+--- freeciv-2.6.3.org/configure.ac	2020-12-31 13:12:07.000000000 +0100
++++ freeciv-2.6.3/configure.ac	2022-04-16 10:08:18.204521223 +0200
+@@ -1214,7 +1214,7 @@ if test "x$server" = "xyes"; then
+     SERVER_LIBS="-lm ${SERVER_LIBS}"
+ 
      dnl Some systems (e.g., BeOS) need this lib
 -    AC_CHECK_LIB(bind, gethostbyaddr, SERVER_LIBS="-lbind $SERVER_LIBS")
 +    AC_CHECK_FUNC(gethostbyaddr,,[AC_CHECK_LIB(bind, gethostbyaddr, SERVER_LIBS="-lbind $SERVER_LIBS")])
  
      dnl Readline library and header files.
      FC_HAS_READLINE()
-@@ -501,13 +501,13 @@
+@@ -1319,13 +1319,13 @@ dnl Check for extra socket libraries.
  dnl If the AC_CHECK_FUNCS check finds the function, we don't look any
  dnl further.  This is rumoured to prevent choosing the wrong libs on IRIX.
  if test $ac_cv_func_gethostbyname = no; then
@@ -25,4 +26,4 @@
 +  AC_SEARCH_LIBS(gethostbyaddr, bind)
  fi
  
- dnl The use of both AC_FUNC_VSNPRINTF and AC_CHECK_FUNCS(vsnprintf) is
+ dnl Windows fdopen does not work with sockets.
