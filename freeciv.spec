@@ -1,54 +1,66 @@
 #
 # TODO:
-#	- work on authentication and Freeciv database support (fcdb)
+#	- more modpack variants beside gtk3?
+#	- qt client and modpack? (Qt5Core, Qt5Gui, Qt5Widgets >= 5.2)
+#	- sdl2 instead of sdl?
+#	- gtk3.22 instead of gtk3?
+#	- work on authentication and Freeciv database support (fcdb: mysql/postgres/sqlite3)
 #	- patch all packaged desktop files
-#	- modpack requires gtk2 or gtk3
 #
 # Conditional build:
-%bcond_without  magickwand	# build without MagickWand map image toolkit support
-%bcond_without  system_lua	# build with bundled lua
-%bcond_without	gtk2		# build without gtk2 client
-%bcond_without	gtk3		# build without gtk3 client
-%bcond_without	sdl		# build without sdl client
-%bcond_without	xaw		# build without xaw client
-%bcond_with	qt		# build with qt client (broken)
-%bcond_without	modpack		# build without modpack installer
+%bcond_without	magickwand	# MagickWand map image toolkit support
+%bcond_without	system_lua	# system Lua
+%bcond_without	gtk2		# GTK+ 2 client
+%bcond_without	gtk3		# GTK+ 3 client
+%bcond_without	sdl		# SDL client
+%bcond_without	xaw		# Xaw client
+%bcond_with	qt		# Qt client (used to be broken)
+%bcond_without	modpack		# modpack installer
+%bcond_without	ruledit		# (Qt based) rule editor
 #
 Summary:	FREE CIVilization clone
 Summary(es.UTF-8):	Clon del juego Civilization
 Summary(pl.UTF-8):	Niekomercyjny klon CIVilization
 Summary(pt_BR.UTF-8):	Clone do jogo Civilization
 Name:		freeciv
-Version:	2.6.3
-Release:	3
+Version:	2.6.6
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games/Strategy
 Source0:	http://downloads.sourceforge.net/freeciv/%{name}-%{version}.tar.bz2
-# Source0-md5:	68f3eab21a20fcf7fe7de39d0915e23f
+# Source0-md5:	2f40775f142b509c0bfc6db89a3a8171
 # NOTE: current version of freeland tiles does not work with newest freeciv version
 #Source1:	http://download.gna.org/freeciv/contrib/tilesets/freeland/freeland-normal-2.0.0.tar.gz
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-desktop.patch
-Patch3:		imagemagick7.patch
 URL:		http://freeciv.wikia.com/
 %{?with_magickwand:BuildRequires:	ImageMagick-devel}
 %{?with_sdl:BuildRequires:	SDL_image-devel}
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_mixer-devel
-BuildRequires:	autoconf >= 2.52
+BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	curl-devel
+BuildRequires:	bzip2-devel
+BuildRequires:	curl-devel >= 7.12.1
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel
-%{?with_gtk2:BuildRequires:	gtk+2-devel}
-%{?with_gtk3:BuildRequires:	gtk+3-devel}
+%{?with_gtk2:BuildRequires:	gtk+2-devel >= 2:2.12.0}
+%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.8.0}
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
+BuildRequires:	libxml2-devel >= 2.0
 %{?with_system_lua:BuildRequires:	lua53-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 %{?with_xaw:BuildRequires:	xorg-lib-libXaw-devel}
+BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
+%if %{with ruledit}
+BuildRequires:	Qt5Core-devel >= 5.2
+BuildRequires:	Qt5Gui-devel >= 5.2
+BuildRequires:	Qt5Widgets-devel >= 5.2
+BuildRequires:	qt5-build >= 5.2
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-O1
@@ -71,20 +83,6 @@ przez komputer.
 O FreeCiv é uma implementação do Civilization II para o Sistema X
 Window.
 
-%package client
-Summary:	GTK2 Freeciv game client
-Summary(pl.UTF-8):	Klient gry Freeciv korzystający z GTK2
-Group:		X11/Applications/Games/Strategy
-Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-client-common = %{version}-%{release}
-Suggests:	%{name}-server = %{version}-%{release}
-
-%description client
-This package contains GTK2-based Freeciv game client.
-
-%description client -l pl.UTF-8
-Ten pakiet zawiera klienta gry Freeciv korzystającego z GTK2.
-
 %package client-common
 Summary:	Freeciv game client common files
 Summary(pl.UTF-8):	Wspólne pliki klientów gry Freeciv
@@ -99,11 +97,27 @@ This package contains common files for Freeciv game clients.
 %description client-common -l pl.UTF-8
 Ten pakiet zawiera wspólne pliki dla klientów gry Freeciv.
 
+%package client
+Summary:	GTK2 Freeciv game client
+Summary(pl.UTF-8):	Klient gry Freeciv korzystający z GTK2
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-client-common = %{version}-%{release}
+Requires:	gtk+2 >= 2:2.12.0
+Suggests:	%{name}-server = %{version}-%{release}
+
+%description client
+This package contains GTK2-based Freeciv game client.
+
+%description client -l pl.UTF-8
+Ten pakiet zawiera klienta gry Freeciv korzystającego z GTK2.
+
 %package client-gtk3
 Summary:	GTK3 Freeciv game client
 Summary(pl.UTF-8):	Klient gry Freeciv korzystający z GTK3
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
+Requires:	gtk+3 >= 3.8.0
 Suggests:	%{name}-server = %{version}-%{release}
 
 %description client-gtk3
@@ -148,6 +162,7 @@ Summary(pl.UTF-8):	Instalator dodatków do gry Freeciv
 Group:		X11/Applications/Games/Strategy
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-client-common = %{version}-%{release}
+Requires:	gtk+3 >= 3.8.0
 Suggests:	%{name}-server = %{version}-%{release}
 
 %description modpack
@@ -163,6 +178,18 @@ not install anything for system-wide use.
 %description modpack -l pl.UTF-8
 Ten pakiet zawiera instalator dodatków do gry Freeciv dostępnych w
 internecie.
+
+%package ruledit
+Summary:	Freeciv graphical ruleset editor
+Summary(pl.UTF-8):	Graficzny edytor reguł gry Freeciv
+Group:		X11/Applications/Games/Strategy
+Requires:	%{name} = %{version}-%{release}
+
+%description ruledit
+Freeciv graphical ruleset editor.
+
+%description ruledit -l pl.UTF-8
+Graficzny edytor reguł gry Freeciv.
 
 %package server
 Summary:	Freeciv game server
@@ -180,22 +207,22 @@ Ten pakiet zawiera server gry Freeciv.
 %setup -q
 %patch0 -p1
 #%patch1 -p1
-%patch3 -p1
 
 cp -f %{_aclocaldir}/glib-gettext.m4 m4/
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal} -I m4 -I dependencies/m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	--disable-silent-rules \
 	--enable-client=stub,%{?with_gtk2:gtk2},%{?with_gtk3:gtk3},%{?with_qt:qt},%{?with_sdl:sdl},%{?with_xaw:xaw} \
+	--enable-fcmp=%{?with_modpack:gtk3}%{!?with_modpack:no} \
 	--enable-mapimg=%{?with_magickwand:magickwand}%{!?with_magickwand:no} \
+	%{!?with_ruledit:--disable-ruledit} \
 	%{?with_sdl:--enable-sdl-mixer=sdl} \
-	%{!?with_modpack:--enable-fcmp=no} \
 	%{?with_system_lua:--enable-sys-lua}
 
 %{__make}
@@ -227,46 +254,26 @@ cp -a data/stdsounds{,.soundspec} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/freeciv-stub
 
+# unpackaged variants
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man6/freeciv-{gtk3.22,mp-cli,mp-gtk2,mp-qt,sdl2}.6*
+
 # needed if building --without gtk2,gtk3,sdl
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/themes
 
 %find_lang %{name}
+%find_lang %{name}-nations -a %{name}.lang
+%if %{with ruledit}
+%find_lang %{name}-ruledit
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS doc/BUGS ChangeLog doc/FAQ doc/HOWTOPLAY NEWS NEWS-2.6
-%doc doc/README.effects doc/README.fcdb doc/README.graphics doc/README.sound
-%doc doc/README.rulesets doc/TODO
+%doc AUTHORS ChangeLog NEWS NEWS-2.6 doc/{BUGS,FAQ,HOWTOPLAY,README.effects,README.fcdb,README.graphics,README.sound,README.rulesets,TODO}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/helpdata.txt
-
-%files server
-%defattr(644,root,root,755)
-%{_sysconfdir}/freeciv
-%attr(755,root,root) %{_bindir}/freeciv-server
-#attr(755,root,root) %{_bindir}/freeciv-manual
-%{_desktopdir}/org.freeciv.server.desktop
-%{_datadir}/appdata/freeciv-server.appdata.xml
-%{_datadir}/%{name}/civ1
-%{_datadir}/%{name}/civ2
-%{_datadir}/%{name}/civ2civ3
-%{_datadir}/%{name}/classic
-%{_datadir}/%{name}/default
-%{_datadir}/%{name}/experimental
-%{_datadir}/%{name}/hexemplio
-%{_datadir}/%{name}/multiplayer
-%{_datadir}/%{name}/nation
-%{_datadir}/%{name}/override
-%{_datadir}/%{name}/sandbox
-%{_datadir}/%{name}/scenarios
-%{_datadir}/%{name}/*.serv
-%{_mandir}/man6/freeciv-server.6*
-#{_mandir}/man6/freeciv-manual.6*
-%{_iconsdir}/hicolor/*/apps/freeciv-server.png
-%{_pixmapsdir}/freeciv-server.png
 
 %files client-common
 %defattr(644,root,root,755)
@@ -284,18 +291,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}/themes
 %{_datadir}/%{name}/trident
 %{_datadir}/%{name}/wonders
-
-%if %{with modpack}
-%files modpack
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/freeciv-mp-gtk3
-%{_desktopdir}/org.freeciv.mp.gtk3.desktop
-%{_datadir}/appdata/freeciv-mp-gtk3.appdata.xml
-%{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
-%{_pixmapsdir}/freeciv-modpack.png
-%{_mandir}/man6/freeciv-modpack.6*
-%{_mandir}/man6/freeciv-mp-gtk3.6*
-%endif
+%{_mandir}/man6/freeciv.6*
+%{_mandir}/man6/freeciv-client.6*
 
 %if %{with gtk2}
 %files client
@@ -306,7 +303,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/freeciv.rc-2.0
 %{_datadir}/%{name}/gtk2_menus.xml
 %{_datadir}/%{name}/themes/gui-gtk-2.0
-%{_mandir}/man6/freeciv-client.6*
 %{_mandir}/man6/freeciv-gtk2.6*
 %{_iconsdir}/hicolor/*/apps/freeciv-client.png
 %{_pixmapsdir}/freeciv-client.png
@@ -341,3 +337,46 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man6/freeciv-xaw.6*
 %endif
 
+%if %{with modpack}
+%files modpack
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-mp-gtk3
+%{_desktopdir}/org.freeciv.mp.gtk3.desktop
+%{_datadir}/appdata/freeciv-mp-gtk3.appdata.xml
+%{_iconsdir}/hicolor/*/apps/freeciv-modpack.png
+%{_pixmapsdir}/freeciv-modpack.png
+%{_mandir}/man6/freeciv-modpack.6*
+%{_mandir}/man6/freeciv-mp-gtk3.6*
+%endif
+
+%if %{with ruledit}
+%files ruledit -f %{name}-ruledit.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/freeciv-ruledit
+%{_datadir}/appdata/freeciv-ruledit.appdata.xml
+%{_desktopdir}/org.freeciv.ruledit.desktop
+%{_mandir}/man6/freeciv-ruledit.6*
+%endif
+
+%files server
+%defattr(644,root,root,755)
+%{_sysconfdir}/freeciv
+%attr(755,root,root) %{_bindir}/freeciv-server
+%{_desktopdir}/org.freeciv.server.desktop
+%{_datadir}/appdata/freeciv-server.appdata.xml
+%{_datadir}/%{name}/civ1
+%{_datadir}/%{name}/civ2
+%{_datadir}/%{name}/civ2civ3
+%{_datadir}/%{name}/classic
+%{_datadir}/%{name}/default
+%{_datadir}/%{name}/experimental
+%{_datadir}/%{name}/hexemplio
+%{_datadir}/%{name}/multiplayer
+%{_datadir}/%{name}/nation
+%{_datadir}/%{name}/override
+%{_datadir}/%{name}/sandbox
+%{_datadir}/%{name}/scenarios
+%{_datadir}/%{name}/*.serv
+%{_mandir}/man6/freeciv-server.6*
+%{_iconsdir}/hicolor/*/apps/freeciv-server.png
+%{_pixmapsdir}/freeciv-server.png

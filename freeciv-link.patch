@@ -1,7 +1,6 @@
-diff -urNp -x '*.orig' freeciv-2.6.3.org/configure.ac freeciv-2.6.3/configure.ac
---- freeciv-2.6.3.org/configure.ac	2020-12-31 13:12:07.000000000 +0100
-+++ freeciv-2.6.3/configure.ac	2022-04-16 10:08:18.204521223 +0200
-@@ -1214,7 +1214,7 @@ if test "x$server" = "xyes"; then
+--- freeciv-2.6.6/configure.ac.orig	2022-04-15 22:10:01.560412321 +0200
++++ freeciv-2.6.6/configure.ac	2022-04-15 22:31:30.240097611 +0200
+@@ -1236,7 +1236,7 @@ if test "x$server" = "xyes"; then
      SERVER_LIBS="-lm ${SERVER_LIBS}"
  
      dnl Some systems (e.g., BeOS) need this lib
@@ -10,7 +9,7 @@ diff -urNp -x '*.orig' freeciv-2.6.3.org/configure.ac freeciv-2.6.3/configure.ac
  
      dnl Readline library and header files.
      FC_HAS_READLINE()
-@@ -1319,13 +1319,13 @@ dnl Check for extra socket libraries.
+@@ -1364,13 +1364,13 @@ dnl Check for extra socket libraries.
  dnl If the AC_CHECK_FUNCS check finds the function, we don't look any
  dnl further.  This is rumoured to prevent choosing the wrong libs on IRIX.
  if test $ac_cv_func_gethostbyname = no; then
